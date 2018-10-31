@@ -99,6 +99,11 @@ bot.on('message', async message => {
 				if(db.fetch(message.author.id + ".zp") === "zakupione") {
 					return message.channel.send("**Obywatelu!** Ta rola już została przez Ciebie zakupiona!")
 				}
+
+				if(db.fetch(message.author.id + ".zpg") === "zakupione") {
+					return message.channel.send("**Obywatelu!** Posiadasz już rangę `Gigant`... Oznacza to, że tej nie możesz kupić. Natomiast możesz ją ulepszyć do rangi `Legenda` poprzez komendę `vip ulepsz`.")
+				}
+
 				if(db.fetch(message.author.id + ".money") < 100000) {
 					return message.channel.send("**Obywatelu!** Posiadasz za mało pieniędzy, aby to zakupic.")
 				}
@@ -113,6 +118,11 @@ bot.on('message', async message => {
 				if(db.fetch(message.author.id + ".zpg") === "zakupione") {
 					return message.channel.send("**Obywatelu!** Ta rola już została przez Ciebie zakupiona!")
 				}
+
+				if(db.fetch(message.author.id + ".zp") === "zakupione") {
+					return message.channel.send("**Obywatelu!** Posiadasz już rangę `Legenda`... Oznacza to, że tej nie możesz kupić.")
+				}
+
 				if(db.fetch(message.author.id + ".money") < 50000) {
 					return message.channel.send("**Obywatelu!** Posiadasz za mało pieniędzy, aby to zakupic.")
 				}
@@ -128,8 +138,15 @@ bot.on('message', async message => {
 			if(args[1] == "legenda") {
 				let embed = new Discord.RichEmbed()
 				.setAuthor("Funkcje rangi: LEGENDA")
-				.setDescription("**Panel VIP:** TAK\n**Strefa VIP:** TAK\n**Daily:** x4\n**Zmiana koloru nicku:** TAK\n**Zmiana Pseudonimu:** TAK\n**Dodawanie Reakcji:** TAK\n**Własny tytuł userinfo:** Darmowy")
+				.setDescription("**Panel VIP:** TAK\n**Strefa VIP:** TAK\n**Daily:** x4\n**Zmiana koloru nicku:** TAK\n**Zmiana Pseudonimu:** TAK\n**Dodawanie Reakcji:** TAK\n**Własny tytuł userinfo:** Darmowy\n**Role VIP:** TAK")
 				.setFooter("Aby ją kupić, użyj cc!sklep kup legenda.");
+				message.channel.send(embed);
+			}
+			if(args[1] == "gigant") {
+				let embed = new Discord.RichEmbed()
+				.setAuthor("Funkcje rangi: LEGENDA")
+				.setDescription("**Panel VIP:** TAK\n**Strefa VIP:** TAK\n**Daily:** x2\n**Zmiana koloru nicku:** NIE\n**Zmiana Pseudonimu:** TAK\n**Dodawanie Reakcji:** NIE\n**Własny tytuł userinfo:** -50%\n**Role VIP:** NIE")
+				.setFooter("Aby ją kupić, użyj cc!sklep kup gigant.");
 				message.channel.send(embed);
 			}
 		}
@@ -154,9 +171,17 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}vip`) {
-		if(args[0] === "setnickcolor") {
-			let role = await message.guild.create.role("test");
-			role.setPosition(11);
+		const embed = new Discord.RichEmbed()
+			.setColor("RED")
+			.setDescription("Ta funkcja zostanie udostępniona do użytku wkrótce!")
+		if(!args[0]) {
+			message.channel.send(embed);
+		}
+		if(args[0] == "panel") {
+			message.channel.send(embed);
+		}
+		if(args[0] == "ulepsz") {
+			message.channel.send(embed);
 		}
 	}
 	
@@ -166,11 +191,27 @@ bot.on('message', async message => {
         return message.channel.send("**Obywatelu**! Ty już odebrałeś(aś) swoje dzienne kredyty! Odczekaj 24h, zanim weźmiesz kolejne.")
            
 		}
-		db.add(message.author.id  + '.money', 200);
+		//db.add(message.author.id  + '.money', 200);
 
-		message.channel.send("Twoje dzienne kredyty w wysokości **200 zł** zostały przez Ciebie odebrane.")
+		//message.channel.send("Twoje dzienne kredyty w wysokości **200 zł** zostały przez Ciebie odebrane.")
 
-		db.set(message.author.id  + ".daily",  Date.now() + 86400000)
+		if (message.member.roles.find(r => r.id === "456849366515187742")) {
+			db.add(message.author.id  + '.money', 200);
+			db.set(message.author.id  + ".daily",  Date.now() + 86400000)
+			message.channel.send("Twoje dzienne kredyty w wysokości **200 zł** zostały przez Ciebie odebrane.")
+		}
+
+		if (message.member.roles.find(r => r.id === "457049143492476939")) {
+			db.add(message.author.id  + '.money', 400);
+			db.set(message.author.id  + ".daily",  Date.now() + 86400000)
+			message.channel.send("Twoje dzienne kredyty w wysokości **400 zł** zostały przez Ciebie odebrane. (**Daily x2** - Gigant)")
+		}
+
+		if (message.member.roles.find(r => r.id === "457049316385882113")) {
+			db.add(message.author.id  + '.money', 800);
+			db.set(message.author.id  + ".daily",  Date.now() + 86400000)
+			message.channel.send("Twoje dzienne kredyty w wysokości **800 zł** zostały przez Ciebie odebrane. (**Daily x4** - Legenda)")
+		}
 	} //
 	
 	if(cmd === `${prefix}kick`){
@@ -319,6 +360,350 @@ bot.on('message', async message => {
         .addField("Aktualna gra:", `${aUser.presence.game ? aUser.presence.game.name : 'Brak'}`)
         .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
         message.channel.send(userinfo);
+	}
+	
+	if(cmd === `${prefix}upr`){
+        if (message.member.roles.find(r => r.id === "455426439433551883")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Właściciel`.");
+        if (message.member.roles.find(r => r.id === "455430899861815296")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Starszy Administrator`.");
+        if (message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Administrator`.");
+        if (message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Administrator`.");
+        if (message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Moderator`.");
+        if (message.member.roles.find(r => r.id === "457105125886918667")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Moderator`.");
+        
+        if (message.member.roles.find(r => r.id === "456849366515187742")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Społeczność`.");
+        if (message.member.roles.find(r => r.id === "454946768723902476")) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Wygląda na to, że nie posiadasz żadnej roli. Zgłoś się jak najszybciej do administratora.`)
+	}
+	
+	if(cmd === `${prefix}server` || cmd === `${prefix}serverinfo`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+
+        let sicon = message.guild.iconURL;
+        let serverembed = new Discord.RichEmbed()
+        .setColor("FFA07A")
+        .setAuthor(`${message.guild.name}`, `https://cdn.discordapp.com/emojis/473897310414176266.png?v=1`)
+        .setThumbnail(sicon)
+        //.addField("Name:", message.guild.name)
+        .addField("Serwer utworzony:", `${moment(message.guild.createdAt).format('DD.MM.YYYY HH:mm:ss')}`)
+        .addField("Dołączyłeś(aś):",`${moment(message.author.createdAt).format('DD.MM.YYYY HH:mm:ss')}`)
+        .addField("Liczba użytkoników:", message.guild.memberCount)
+        .addField("Region:", `${message.guild.region.replace("eu-central", ":flag_eu: EU Central")}`)
+        .addField("Kanały tekstowe:", message.guild.channels.findAll("type", "text").length)
+        .addField("Kanały głosowe:", message.guild.channels.findAll("type", "voice").length)
+        .addField("Liczba ról:", `${message.guild.roles.size}`)
+        .addField("Emotki:", message.guild.emojis.size)
+        .addField("Właściciel Techniczny:", `${message.guild.owner.user.username}#${message.guild.owner.user.discriminator}`)
+        .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`);
+    
+        message.channel.send(serverembed);
+	}
+	
+	if(cmd === `${prefix}channel`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**Obywatelu!** Nie masz wystarczających uprawnień, wymaganych do użycia tej komendy.");
+        let channelname = args.slice(1).join(" ");
+        let everyone = message.guild.roles.find(`name`, "@everyone");
+        if(args[0] == 'lock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: false, ADD_REACTIONS: false }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Wedle twojego życzenia zablokowałem kanał. Inni już nie mogą tu pisać.`);
+        if(args[0] == 'unlock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: true, ADD_REACTIONS: true }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Wedle twojego życzenia odblokowałem kanał. Inni znów mogą tu pisać.`);
+        if(args[0] == 'setname') return message.channel.edit({ name: `${channelname}` }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Nazwa kanału została zmieniona na: ${channelname}`);
+        if(!args[0]) return message.channel.send(`**Administratorze!** Zastosuj się do poprawnego korzystania z tej komendy: ` + "`cc!channel <lock/unlock/setname>`.")
+        //if(args[0] == 'setname') return message.channel.setName(channelname), message.channel.send(`${bot.emojis.find(`name`, 'success')} Mmm... You asked for a channel name change. It has been done! The new name of this channel is: **${channelname}**.`);
+        //let cmdlogs = message.guild.channels.find(`id`, "471972734851612672");
+        //cmdlogs.send(`${bot.emojis.find(`name`, 'alert')} The **${message.author.tag}**(**${message.author.id}**) user has used the **channel** command on the **${message.guild.name}**(**${message.guild.id}**) server.`);
+	}
+	
+	if(cmd === `${prefix}eval`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        if(message.author.id !== '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz uprawnień do tej komendy, wymagana ranga: `Założyciel(ka)`.")
+        if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')}` + " Proszę, abyś podał(a) kod, który chcesz evalować. Bez niego nie da rady ;(.")
+        let result = eval(args.join(" ")).toString()
+          let embed = new Discord.RichEmbed()
+          //.setTitle("Eval")
+          .addField(`${bot.emojis.find(`name`, 'jsonfile')} WEJŚCIE`, "```"+args.join(" ")+"```")
+          .addField(`${bot.emojis.find(`name`, 'txt')} WYJŚCIE`, "```"+result+"```")
+          .setColor("RANDOM")
+          .setFooter(`Kod evalował(a) ${message.author.tag}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
+          message.channel.send(embed);
+	}
+	
+	if(cmd === `${prefix}help` | cmd === `${prefix}hilfe`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        const helpmsg = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle('Moje komendy')
+        .setDescription("Zobacz moje komendy poniżej, są naprawde fajne!")
+        .addField('Podstawowe (5):', '`help` - wyświetla wszystkie komendy bota,\n`uprawnienia` - wyświetla twój poziom uprawnień na serwerze.')
+        .addField('Zabawa (6):', '`ascii` - wyświetla tekst w ascii,\n`reverse` - odwraca podany tekst,\n`choose` - wybiera jedną z podanych wcześniej opcji,\n`avatar` - avatar podanego użytkownika,\n`hug` - przytulasz podanego użytkownika,\n`8ball` - pytanie do bota.. On odpowie,\n`wheel` - losowanie jednej z 9 emotek')
+        .addField('**NOWE!** Support Team ( ):', '`Użyj cc!shelp, aby zobaczyć komendy administracyjne!`')
+        .addField('Zdjęcia (1):', '`cat` - randomowe zdjęcie kota.')
+        .addField('**NOWE!** | Informacje (3):', '`serverinfo` - informacje o serwerze,\n`userinfo` - informacje o danym użytkowniku\n**NOWE!** `botinfo` - informacje o oznaczonym bocie znajdującym się na serwerze.')
+        .addField('**NOWE!** | Inne (2):', '`propozycja` - wysyła propozycję dot. serwera\n`rekutacja <open/close>` - otwiera rekrutację na serwerze')
+		.addField('**NOWE!** | Sklep (3):', '`sklep voucher <kod>` - wpisuje voucher na jakąś rangę/item\n`sklep <kup> <legenda/gigant>` - kupuje wybraną rangę vip\n`sklep lista` - lista itemów w sklepie\n`sklep funkcje <gigant/legenda> - wyświetla funkcje podanej roli ze sklepu')
+		.addField('**NOWE!** Ekonomia (3):', "`daily` - odbiera dzienne kredyty\n`money` - wyświetla stan konta\n**WKRÓTCE!** `przelej @member <kwota>` - przelewa daną kwotę dla użytkownika.")
+        .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
+        message.channel.send(helpmsg);
+	}
+	
+	if(cmd === `${prefix}shelp`){
+		if (message.member.roles.find(r => r.id === "457821597227679745")) return message.channel.send("**Obywatelu!** Musisz być osobą z Support Teamu Cookie Community, aby móc użyć tej komendy.");
+		let shelp = new Discord.RichEmbed()
+		.setAuthor("Komendy Supportu")
+		.setDescription("Poniżej znajdują się komendy administracyjne wraz z opisem...")
+		.addField("**NOWE!** Support Team (3):", "`ban @member <powód>` - banuje podanego użytkownika z podanym powodem... Później też wysyła wiadomość z banem na kanał #modlogi\n`kick @member powód` - wyrzuca użytkownika z serwera za podany powód... Wysyła wiadomość z tym na #modlogi\n**WKRÓTCE!** `warn @member <powód>` - ostrzega użytkownika... 15 warnów = ban.")
+		message.channel.send(shelp);
+	}
+
+	if(cmd === `${prefix}ban`){
+        if (!message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔓Moderator` (lub wyższa) może użyć tej komendy.");
+        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(!bUser) return message.channel.send(":x: Musisz oznaczyć poprawnego uzytkownika!");
+        let bReason = args.join(" ").slice(22);
+        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie posiadasz wymaganych uprawnień, musisz mieć rangę `MODERATOR`.");
+        if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":lock: Ten użytkownik nie może zostać zbanowany!");
+        if(!args[0]) return message.channel.send(`Nie podałeś powodu bana? Lub użytkownika? Więc bana nie ma :grinning:.`);
+    
+        const banEmbed = new Discord.RichEmbed()
+        //.setDescription("WARN")
+        //.setAuthor(`[BAN] ${bUser.tag}`, bUser.displayAvatarURL)
+        .setColor("#9b0090")
+        //.addField("Warned user:", `${wUser}`)
+        .addField("Zbanowany(a):", bUser)
+        .addField("Kanał:", message.channel)
+        //.addField("O godzinie", moment(message.createdAt).format("YYYY.MM.DD, HH:mm:ss"))
+        .addField("Moderator:", message.author.tag)
+        .addField("Powód:", bReason)
+        .setFooter(`$${moment(message.createdAt).format('HH:mm:ss')} | Zbanowany(a) na ${message.guild.name}.`)
+    
+        let banChannel = message.guild.channels.find(`name`, "modlogi");
+        if(!banChannel) return message.channel.send("**Administratorze!** Kanał `modlogi` nie istnieje. Zgłoś to do jednego z dostępnych właścicieli, aby stworzył kanał.");
+
+        message.channel.send(`**SUKCES!** Użytkownik **${bUser}** został zbanowany za **${bReason}**.`)
+        message.guild.member(bUser).ban(bReason);
+        banChannel.send(banEmbed);
+    
+        //let logiKomend = bot.channels.get("458569305341296641");
+        //logiKomend.send(`Użytkownik: **${message.author.tag}** (**${message.author.id}**) \nUżył komendy **ban** na serwerze **${message.guild.name}**, zbanował **${bUser}** za **${bReason}**.`);
+        return;
+	}
+	
+	if(cmd === `${prefix}removerole`){
+        if (!message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔏Administrator` (lub wyższa) może użyć tej komendy.");
+        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
+        let rMember = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
+        if(!rMember) return message.channel.send(`**Administratorze!** Proszę o podanie poprawnego użytkownika.`);
+        let role = args.join(" ").slice(22);
+        if(!role) return message.channel.send(`**Administratorze!** Musisz podać pełną nazwę roli!`);
+        let gRole = message.guild.roles.find(`name`, role);
+        if(!gRole) return message.channel.send(`**Administratorze!** Podana przez Ciebie rola nie istnieje. Sprawdź pisownię, być może jest tam błąd.`);
+
+        if(!rMember.roles.has(gRole.id)) return message.reply('On nie ma tej roli.');
+        await(rMember.removeRole(gRole.id));
+
+        try{
+            await rMember.send(`**Obywatelu!** Straciłeś(aś) rolę **${gRole.name}** na serwerze **${message.guild.name}**!`)
+            await message.channel.send(`**SUKCES!** Rola **${gRole.name}** została usunięta dla **<@${rMember.id}>**!`);
+        }catch(error){
+            console.log(error);
+        }
+	}
+	
+	if(cmd === `${prefix}addrole`){
+        if (!message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send("**Obywatelu!** Posiadasz zbyt niskie uprawnienia, aby użyć tej komendy.");
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
+        let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+        if(!rMember) return message.channel.send(`**Administratorze!** Proszę o podanie poprawnej nazwy użytkownika -> oznacz go.`);
+        let role = args.join(" ").slice(22);
+        //if(!args[1]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} You must provide a role (give its name, it can not be a mention)`);
+        let gRole = message.guild.roles.find(`name`, role);
+        if(!gRole) return message.channel.send(`**Administratorze!** Podana przez Ciebie rola nie istnieje. Sprawdź pisownie, być może jest błąd.`);
+
+        if(rMember.roles.has(gRole.id)) return;
+        await(rMember.addRole(gRole.id));
+
+        try{
+            rMember.send(`**HEJ HO!** Otrzymałeś(aś) rolę **${gRole.name}** na serwerze **${message.guild.name}**!`)
+            message.channel.send(`**SUKCES!** Rola o nazwie **${gRole.name}** została nadana dla użytkownika **<@${rMember.id}>**!`)
+        }catch(error){
+            console.log(error);
+        }
+	}
+	
+	if(cmd === `${prefix}avatar`){
+        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        let aUser = message.mentions.users.first() || message.author || message.user.id;
+        let avEmbed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        //.setDescription(`Avatar ${aUser.username}:`)
+        //.setThumbnail(aUser.displayAvatarURL)
+        .setDescription(`${bot.emojis.find(`name`, 'user')} Avatar ${aUser.username}:`)
+        .setImage(aUser.displayAvatarURL)
+        .setFooter(`Komenda wywołana przez ${message.author.tag}.`);
+        message.channel.send(avEmbed);
+        return;
+	}
+	
+	if(cmd === `${prefix}hug`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        let aUser = message.mentions.users.first() || message.author || message.user.id;
+        let huglinks = ["https://media.giphy.com/media/l0HlOvJ7yaacpuSas/giphy.gif", "https://media.giphy.com/media/xT39CXg70nNS0MFNLy/giphy.gif", "https://media.giphy.com/media/143v0Z4767T15e/giphy.gif", "https://media.giphy.com/media/BVRoqYseaRdn2/giphy.gif", "https://media.giphy.com/media/od5H3PmEG5EVq/giphy.gif"];
+        let math = Math.floor((Math.random() * huglinks.length));
+        let hugEmbed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`Użytkownik ${message.author.tag} przytulił(a) ${aUser.tag}.`, "https://cdn.discordapp.com/emojis/472468044871106591.png?v=1")
+        .setImage(huglinks[math])
+
+        if(!args[0]) return message.channel.send(`**HEJ HO!** Oznacz osobę, którą chcesz przytulić.`);
+        message.channel.send(hugEmbed);
+	}
+	
+	if(cmd === `${prefix}kiss`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        let aUser = message.mentions.users.first() || message.author || message.user.id;
+        let kisslinks = ["https://media.giphy.com/media/4dCj46k0Qtyxy/giphy.gif", "https://media.giphy.com/media/bCY7hoYdXmD4c/giphy.gif", "https://media.giphy.com/media/zkppEMFvRX5FC/giphy.gif", "https://media.giphy.com/media/5GdhgaBpA3oCA/giphy.gif", "https://media.giphy.com/media/hnNyVPIXgLdle/giphy.gif", "https://media.giphy.com/media/Ka2NAhphLdqXC/giphy.gif", "https://media.giphy.com/media/QGc8RgRvMonFm/giphy.gif"];
+        let math = Math.floor((Math.random() * kisslinks.length));
+        let kissEmbed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`Użytkownik ${message.author.tag} pocałował(a) ${aUser.tag}.`, "https://cdn.discordapp.com/emojis/472468044871106591.png?v=1")
+        .setImage(kisslinks[math])
+
+        if(!args[0]) return message.channel.send(`**HEJ HO!** Oznacz osobę, którą chcesz pocałować.`);
+        if(args[0] == `<@${message.author.id}>`) return message.channel.send('Sam(a) siebie chcesz pocałować? :)')
+        message.channel.send(kissEmbed);
+    }
+
+    if(cmd === `${prefix}pat`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        let aUser = message.mentions.users.first() || message.author || message.user.id;
+        let patlinks = ["https://media.giphy.com/media/ye7OTQgwmVuVy/giphy.gif", "https://media.giphy.com/media/L2z7dnOduqEow/giphy.gif", "https://media.giphy.com/media/109ltuoSQT212w/giphy.gif", "https://media.giphy.com/media/osYdfUptPqV0s/giphy.gif", "https://media.giphy.com/media/osYdfUptPqV0s/giphy.gif", "https://media.giphy.com/media/SvQ7tWn8zeY2k/giphy.gif"];
+        let math = Math.floor((Math.random() * patlinks.length));
+        let patEmbed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`Użytkownik ${message.author.tag} pogłaskał(a) ${aUser.tag}.`, "https://cdn.discordapp.com/emojis/472468044871106591.png?v=1")
+        .setImage(patlinks[math])
+        
+        let patEmbedd = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`${bot.emojis.find(`name`, 'like1')} Użytkownik ${message.author.tag} pogłaskał(a) samego siebie!`)
+        .setImage(patlinks[math])
+
+        if(!args[0]) return message.channel.send(`**HEJ HO!** Oznacz osobę, którą chcesz pogłaskać.`);
+        if(args[0] == `<@${message.author.id}>`) return message.channel.send(patEmbedd)
+        message.channel.send(patEmbed);
+	}
+	
+	if(cmd === `${prefix}ankieta` || cmd === `${prefix}vote`){
+        if (!message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send("**Obywatelu!** Nie masz wystarczających uprawnień do użycia tego!");
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        //if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(":lock: You do not have sufficient permissions to create a survey.");
+        const ankietaMessage = args.join(" ");
+        //let ankieta = await message.channel.send(ankietaEmbed);
+        let ankietaEmbed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor(`NOWA ANKIETA`, `https://cdn.discordapp.com/emojis/472694503229358080.png?v=1`)
+        .setDescription(ankietaMessage)
+        .setFooter(`Ankieta stworzona przez ${message.author.tag}`);
+    
+        let ankieta = await message.channel.send(ankietaEmbed);
+        ankieta.react(bot.emojis.find(`name`, 'success'));
+        ankieta.react(bot.emojis.find(`name`, 'error'));
+        message.delete();
+        return;
+    }
+
+    if(cmd === `${prefix}reverse`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        if(!args[0]) return message.channel.send(`**HEJ HO!** Podaj jakikolwiek tekst, który chcesz odwrócić!`);
+        if (args[0].includes('enoyreve@')) return message.channel.send(`**UWAGA!** Nie możesz tego zrobić.`);
+        if (args[0].includes('ereh@')) return message.channel.send(`**UWAGA!** Nie możesz tego zrobić!`);
+    
+        function reverseString(str) {
+            return str.split("").reverse().join("");
+        }
+        let sreverse = reverseString(args.join(' '))
+        //if(sreverse === '@here' || sreverse === '@everyone' || sreverse === `https://discord.gg/${invite.code}`) return message.channel.send("Nie możesz tego odwrócić!")
+        if(args[0] === sreverse) {
+        sreverse = `${args.join(' ')} [wyszło na to samo ;(]`
+		}
+		let rember = new Discord.RichEmbed()
+		.addField("Odwrócony tekst:", "`" + `${sreverse}` + "`")
+		message.channel.send(rember);
+        //message.channel.send(`${bot.emojis.find(`name`, 'repeat')} Odwrócony tekst: **${sreverse}**`);
+    }
+
+    if(cmd === `${prefix}cat`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        let catlinks = ["https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif", "https://media.giphy.com/media/l1J3pT7PfLgSRMnFC/giphy.gif", "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif", "https://media.giphy.com/media/6uMqzcbWRhoT6/giphy.gif", "https://media.giphy.com/media/nNxT5qXR02FOM/giphy.gif", "https://media.giphy.com/media/11s7Ke7jcNxCHS/giphy.gif", "https://media.giphy.com/media/Nm8ZPAGOwZUQM/giphy.gif", "https://media.giphy.com/media/Q56ZI04r6CakM/giphy.gif"];
+        let math = Math.floor((Math.random() * catlinks.length));
+        let catEmbed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .addField(`:cat: Randomowy kot`, `Tutaj jest jeden z moich kotów:`)
+        .setImage(catlinks[math])
+        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | ${message.author.tag}`);
+    
+        message.channel.send(catEmbed);
+    }
+
+    if(cmd === `${prefix}8ball`){
+        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        //if(!args[2]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Please, give me the full question!`);
+        if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Ahh... You did not give a question, can I know why?`);
+        let replies = ["Tak, oczywiście", "Przepraszam, nie", "Skąd mam to wiedzieć?", "Możesz zapytać później?", "Hmm... Nie."];
+    
+        let result = Math.floor((Math.random() * replies.length));
+        let question = args.slice(0).join(" ");
+    
+        let ballembed = new Discord.RichEmbed()
+        .setAuthor(`${message.author.tag}`, `${message.author.displayAvatarURL}`)
+        .setColor("RANDOM")
+        .setDescription(question)
+        //.addField("Pytanie", question)
+        .addField("Odpowiedź:", replies[result])
+        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | ${message.author.tag}`);
+    
+        message.channel.send(ballembed);
+        return;
+    }
+
+    if(cmd === `${prefix}choose`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        var odp = Math.floor(Math.random() *2) + 1
+        var a = args.join(" ").split(";")[0]
+        var b = args.join(" ").split(";")[1]
+        var odp2
+        switch(odp) {
+          case 1:
+          odp2 = a;
+          break;
+      
+          case 2:
+          odp2 = b;
+        }
+		let messagechoose = await message.channel.send(`**CK** | Hmmmmmmmmm.....`)
+		let cembed = new Discord.RichEmbed()
+		.setDescription("**SUKCES!** Wybieram: `" + `${odp2}` + "`.")
+		messagechoose.edit(cembed);
+		//messagechoose.edit(`**SUKCES!** Wybieram: ` + "`" + `${odp2}` + "`.")
+    }
+
+    if(cmd === `${prefix}clear`){
+        if (!message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send("**Obywatelu!** Nie masz wystarczających uprawnień do użycia tej komendy.");
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        //if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MESSAGES` permissions, check them using `cb!permissions`.");
+    
+        let messagecount = parseInt(args.join(' '));
+        message.channel.fetchMessages({
+          limit: messagecount
+        }).then(messages => message.channel.bulkDelete(messages));
+        let purgeSuccessMessage = await message.channel.send(`**SUKCES!** Zostało wyczyszczone **${messagecount}** wiadomości na tym kanale!`);
+        purgeSuccessMessage.delete(10000);
+    }
+
+    if(cmd === `${prefix}ping`){
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        const m = await message.channel.send("Ping :ping_pong: ");
+        m.edit(`:ping_pong: Pong! ${m.createdTimestamp - message.createdTimestamp}ms. API is ${Math.round(bot.ping)}ms`);
     }
 	
 });
