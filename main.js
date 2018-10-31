@@ -6,8 +6,214 @@ const moment = require("moment");
 //const fs = require("fs");
 const ms = require("ms");
 
+bot.on("ready", e => {
+	setInterval (function (){
+	  var statusrand  = Math.floor(Math.random() * 8 + 1);
+	  if (statusrand === 1) {
+		bot.user.setActivity(`Sprawdź nowe funkcje już teraz!`);   
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+	  if (statusrand === 2) {
+		bot.user.setActivity(`Użyj cc!help, a ujrzysz fajne rzeczy!`);
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+	  if (statusrand === 3) {
+		bot.user.setActivity(`V edycja serwera wystartowała!`);  
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+	  if (statusrand === 4) {
+		bot.user.setActivity(`Przetestuj sklep! cc!sklep`);  
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+	  if (statusrand === 5) {
+		bot.user.setActivity(`Dziękujemy za korzystanie z bota!`);  
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+	  if (statusrand === 6) {
+		bot.user.setActivity(`Dziękujemy, że jesteście z nami!`); 
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand); 
+	  }
+	  if (statusrand === 7) {
+		bot.user.setActivity(`Nowe, lepsze funkcje już są!`);  
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+	  if (statusrand === 8) {
+		bot.user.setActivity(`Bot zrobiony!`);  
+		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+		console.log(statusrand);
+	  }
+  
+	}, 10000);
+  });
+  
+  bot.on("ready", e => {
+	setInterval (function (){
+	  bot.channels.get("505809906033754150").edit({ name: 'W'});   
+	  
+	  bot.channels.get("505809906033754150").edit({ name: 'Wi'});
+  
+	  bot.channels.get("505809906033754150").edit({ name: 'Wit'}); 
+  
+	  bot.channels.get("505809906033754150").edit({ name: 'Wita'});
+  
+	  bot.channels.get("505809906033754150").edit({ name: 'Witam'});  
+  
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy'});
+  
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy n'});  
+  
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na'}); 
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na s'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na se'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na ser'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serw'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwe'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwer'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwerz'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwerze'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwerze!'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: 'To'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: ' To już'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: '  To już V'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: ' To już V edycja!'});
+		
+	  //bot.channels.get("505809906033754150").edit({ name: 'To już V edycja!'});
+  
+	}, 7000);
+  });
+  
+  bot.on("ready", e => {
+	setInterval (function (){
+	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);    
+	  
+	  bot.channels.get("505827628603801611").setName(`${bot.guilds.get("454946768723902476").roles.get("457106935720706048").members.size} partnerów`);
+  
+	  bot.channels.get("505829821482532871").setName(`${bot.guilds.get("454946768723902476").roles.get("457821597227679745").members.size} adminów`); 
+  
+	  bot.channels.get("505831581571612693").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
+  
+	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);  
+  
+	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);
+  
+	}, 7000);
+  });
+  
+  bot.on("ready", e => {
+	setInterval (function (){
+	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);    
+	  
+	  bot.channels.get("505827628603801611").setName(`${bot.guilds.get("454946768723902476").roles.get("457106935720706048").members.size} partnerów`);
+  
+	  bot.channels.get("505829821482532871").setName(`${bot.guilds.get("454946768723902476").roles.get("457821597227679745").members.size} adminów`); 
+  
+	  bot.channels.get("505831581571612693").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
+  
+	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);  
+  
+	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);
+  
+	}, 7000);
+  });
+  
+  bot.on("ready", e => {
+	setInterval (function (){
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');   
+	  
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+  
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie'); 
+  
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+  
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');  
+  
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');
+		
+	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
+  
+	}, 7000);
+  });
+  
+  bot.on("ready", e => {
+	setInterval (function (){
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 St'});    
+	  
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Stre'});
+  
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa'});
+  
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Ad'});
+  
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admi'});  
+  
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admina'});
+		
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 St'});
+		
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Stre'});
+		
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa'});
+		
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Ad'});
+		
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admi'});
+		
+	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admina'});
+  
+	}, 10000);
+  });
+  
+  bot.on("guildMemberRemove", member => {
+	  const embed = new Discord.RichEmbed()
+	  .setAuthor("**BAJO!**")
+	  .setDescription(`Żegnaj ${member}...\nPrzykro nam, że już odchodzisz\nPowodzenia gdzie indziej... :cry:\n \n**Pozostało nas ${bot.guilds.get("454946768723902476").memberCount}**.`)
+	  bot.channels.get("505834357198684180").send(embed);
+  });
+  
+  bot.on("guildMemberAdd", member => {
+	  const embed = new Discord.RichEmbed()
+	  .setAuthor("**SIEMANKO!**")
+	  .setDescription(`Cześć ${member.tag}...\nFajnie, że wybrałeś(aś) nasz serwer!\nPozostań na dłużej a nie pożałujesz... :wink:\n \n**Jest nas teraz ${bot.guilds.get("454946768723902476").memberCount}**.`)
+	  bot.channels.get("505834357198684180").send(embed);
+  });
+
 bot.on('message', async message => {
-    let prefix = "c!";
+    let prefix = "cc!";
     //let prefix = konfiguracja.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
@@ -29,7 +235,7 @@ bot.on('message', async message => {
 	db.add(message.author.id  + '.money', 1);
 	
 	if(cmd === `${prefix}money`){
-		if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
+		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
 		if(!args[0]) {
 			const stan = db.fetch(message.author.id + '.money') || "0";
 			let embed = new Discord.RichEmbed()
@@ -69,7 +275,7 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}sklep`){
-		if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
+		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
 		if(!args[0]) return message.channel.send("**Hej Ho!** Co chcesz zrobić? Oto akcje, które możesz wykonać: \n`sklep lista` - lista produktów w sklepie, \n`sklep kup <produkt>` - kupuje wybrany produkt \n`sklep voucher <kod>` - wykorzystaj voucher na produkt ze sklepu.");
 		let legenda = "457049316385882113";
 		let rMember = message.author;
@@ -186,7 +392,7 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}daily`){
-		if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć");
+		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć");
 		if(Date.now() < db.fetch(message.author.id + ".daily")) {
         return message.channel.send("**Obywatelu**! Ty już odebrałeś(aś) swoje dzienne kredyty! Odczekaj 24h, zanim weźmiesz kolejne.")
            
@@ -701,7 +907,6 @@ bot.on('message', async message => {
     }
 
     if(cmd === `${prefix}ping`){
-        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         const m = await message.channel.send("Ping :ping_pong: ");
         m.edit(`:ping_pong: Pong! ${m.createdTimestamp - message.createdTimestamp}ms. API is ${Math.round(bot.ping)}ms`);
     }
