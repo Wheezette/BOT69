@@ -1,0 +1,21 @@
+{
+  "name": "ccbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "ascii-art": "^1.4.4",
+    "cleverbot.io": "^1.0.4",
+    "discord.js": "^11.4.2",
+    "ms": "^2.1.1",
+    "moment": "^2.22.2",
+    "quick.db": "^7.0.0-b15",
+    "quick.log": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xCookieTM",
+  "license": "ISC"
+}
