@@ -208,7 +208,7 @@ bot.on("ready", e => {
   bot.on("guildMemberAdd", member => {
 	  const embed = new Discord.RichEmbed()
 	  .setAuthor("**SIEMANKO!**")
-	  .setDescription(`Cześć ${member.tag}...\nFajnie, że wybrałeś(aś) nasz serwer!\nPozostań na dłużej a nie pożałujesz... :wink:\n \n**Jest nas teraz ${bot.guilds.get("454946768723902476").memberCount}**.`)
+	  .setDescription(`Cześć ${member}...\nFajnie, że wybrałeś(aś) nasz serwer!\nPozostań na dłużej a nie pożałujesz... :wink:\n \n**Jest nas teraz ${bot.guilds.get("454946768723902476").memberCount}**.`)
 	  bot.channels.get("505834357198684180").send(embed);
   });
 
@@ -568,7 +568,7 @@ bot.on('message', async message => {
         message.channel.send(userinfo);
 	}
 	
-	if(cmd === `${prefix}upr`){
+	if(cmd === `${prefix}upr` || cmd === `${prefix}uprawnienia`){
         if (message.member.roles.find(r => r.id === "455426439433551883")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Właściciel`.");
         if (message.member.roles.find(r => r.id === "455430899861815296")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Starszy Administrator`.");
         if (message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Administrator`.");
@@ -638,19 +638,19 @@ bot.on('message', async message => {
         .setTitle('Moje komendy')
         .setDescription("Zobacz moje komendy poniżej, są naprawde fajne!")
         .addField('Podstawowe (5):', '`help` - wyświetla wszystkie komendy bota,\n`uprawnienia` - wyświetla twój poziom uprawnień na serwerze.')
-        .addField('Zabawa (6):', '`ascii` - wyświetla tekst w ascii,\n`reverse` - odwraca podany tekst,\n`choose` - wybiera jedną z podanych wcześniej opcji,\n`avatar` - avatar podanego użytkownika,\n`hug` - przytulasz podanego użytkownika,\n`8ball` - pytanie do bota.. On odpowie,\n`wheel` - losowanie jednej z 9 emotek')
+        .addField('Zabawa (6):', '`ascii` - wyświetla tekst w ascii,\n`reverse` - odwraca podany tekst,\n`choose` - wybiera jedną z podanych wcześniej opcji,\n`avatar` - avatar podanego użytkownika,\n`hug` - przytulasz podanego użytkownika,\n`8ball` - pytanie do bota.. On odpowie.')
         .addField('**NOWE!** Support Team ( ):', '`Użyj cc!shelp, aby zobaczyć komendy administracyjne!`')
         .addField('Zdjęcia (1):', '`cat` - randomowe zdjęcie kota.')
-        .addField('**NOWE!** | Informacje (3):', '`serverinfo` - informacje o serwerze,\n`userinfo` - informacje o danym użytkowniku\n**NOWE!** `botinfo` - informacje o oznaczonym bocie znajdującym się na serwerze.')
+        .addField('**NOWE!** | Informacje (3):', '`serverinfo` - informacje o serwerze,\n`userinfo` - informacje o danym użytkowniku\n**WKRÓTCE!** `botinfo` - informacje o oznaczonym bocie znajdującym się na serwerze.')
         .addField('**NOWE!** | Inne (2):', '`propozycja` - wysyła propozycję dot. serwera\n`rekutacja <open/close>` - otwiera rekrutację na serwerze')
-		.addField('**NOWE!** | Sklep (3):', '`sklep voucher <kod>` - wpisuje voucher na jakąś rangę/item\n`sklep <kup> <legenda/gigant>` - kupuje wybraną rangę vip\n`sklep lista` - lista itemów w sklepie\n`sklep funkcje <gigant/legenda> - wyświetla funkcje podanej roli ze sklepu')
+		.addField('**NOWE!** | Sklep (3):', '`sklep voucher <kod>` - wpisuje voucher na jakąś rangę/item\n`sklep <kup> <legenda/gigant>` - kupuje wybraną rangę vip\n`sklep lista` - lista itemów w sklepie\n`sklep funkcje <gigant/legenda>` - wyświetla funkcje podanej roli ze sklepu')
 		.addField('**NOWE!** Ekonomia (3):', "`daily` - odbiera dzienne kredyty\n`money` - wyświetla stan konta\n**WKRÓTCE!** `przelej @member <kwota>` - przelewa daną kwotę dla użytkownika.")
         .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
         message.channel.send(helpmsg);
 	}
 	
 	if(cmd === `${prefix}shelp`){
-		if (message.member.roles.find(r => r.id === "457821597227679745")) return message.channel.send("**Obywatelu!** Musisz być osobą z Support Teamu Cookie Community, aby móc użyć tej komendy.");
+		if (!message.member.roles.find(r => r.id === "457821597227679745")) return message.channel.send("**Obywatelu!** Musisz być osobą z Support Teamu Cookie Community, aby móc użyć tej komendy.");
 		let shelp = new Discord.RichEmbed()
 		.setAuthor("Komendy Supportu")
 		.setDescription("Poniżej znajdują się komendy administracyjne wraz z opisem...")
