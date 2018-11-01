@@ -244,6 +244,7 @@ bot.on('message', async message => {
 			//message.channel.send("Twój stan konta wynosi: " + stan + " zł.");
 		}
 		if(args[0] == "add") {
+			if (!message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
 			const userxd = message.mentions.users.first() || args[1];
 			if (!userxd) {
 				return message.channel.send("**Administratorze!** Musisz oznaczyć użytkownika, lub podać jego ID!")
@@ -259,7 +260,9 @@ bot.on('message', async message => {
 			//message.channel.send("Pieniądze dla użytkownika "  + userxd + " zostały dodane!");
 		}
 		if(args[0] == "remove") {
+			if (!message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
 			const userxd = message.mentions.users.first() || args[1];
+		
 			if (!userxd) {
 				return message.channel.send("**Administratorze!** Musisz oznaczyć użytkownika, lub podać jego ID!")
 			}
@@ -572,7 +575,7 @@ bot.on('message', async message => {
         if (message.member.roles.find(r => r.id === "455426439433551883")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Właściciel`.");
         if (message.member.roles.find(r => r.id === "455430899861815296")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Starszy Administrator`.");
         if (message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Administrator`.");
-        if (message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Administrator`.");
+        if (message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Admin`.");
         if (message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Moderator`.");
         if (message.member.roles.find(r => r.id === "457105125886918667")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Moderator`.");
         
