@@ -237,7 +237,7 @@ bot.on('message', async message => {
 		const embed = new Discord.RichEmbed()
 		.setColor("RED")
 		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
+		if(message.author.id !== "39628419738972979") return message.channel.send(embed);
 		let userR = message.mentions.users.first();
 		if(args[0] == `<@${message.author.id}>`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
 		if(args[0] == `@${message.author.tag}`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
@@ -250,10 +250,6 @@ bot.on('message', async message => {
 		message.channel.send(`**HEJ HO!** Nadałeś(aś) punkt reputacji dla ${userR}!`);
 	}
 	if(cmd === `${prefix}money`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
 		if(!args[0]) {
 			const stan = db.fetch(message.author.id + '.money') || "0";
@@ -297,10 +293,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}praca`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		if(args[0] === "info"){
 			if(args[1] === "informatyk"){
 				let embed = new Discord.RichEmbed()
@@ -330,10 +322,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}sklep`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
 		if(!args[0]) return message.channel.send("**Hej Ho!** Co chcesz zrobić? Oto akcje, które możesz wykonać: \n`sklep lista` - lista produktów w sklepie, \n`sklep kup <produkt>` - kupuje wybrany produkt \n`sklep voucher <kod>` - wykorzystaj voucher na produkt ze sklepu.");
 		let legenda = "457049316385882113";
@@ -417,10 +405,6 @@ bot.on('message', async message => {
 		}
 	}
 	if(cmd === `${prefix}ustaw`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		if(args[0] == "plec") {
 			if(args[1] == "dziewczyna") {
 				db.set(message.author.id + ".plec", "Dziewczyna");
@@ -441,10 +425,6 @@ bot.on('message', async message => {
 	
 	if(cmd === `${prefix}vip`) {
 		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
-		const embed = new Discord.RichEmbed()
 			.setColor("RED")
 			.setDescription("Ta funkcja zostanie udostępniona do użytku wkrótce!")
 		if(!args[0]) {
@@ -459,10 +439,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}daily`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć");
 		if(Date.now() < db.fetch(message.author.id + ".daily")) {
         		return message.channel.send("**Obywatelu**! Ty już odebrałeś(aś) swoje dzienne kredyty! Odczekaj 24h, zanim weźmiesz kolejne.")
@@ -492,10 +468,6 @@ bot.on('message', async message => {
 	} //
 	
 	if(cmd === `${prefix}kick`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         	let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         	if(!kUser) return message.channel.send("**Administratorze!** Proszę, abyś oznaczył(a) poprawnego użytkownika!");
         	let kReason = args.join(" ").slice(22);
@@ -521,10 +493,6 @@ bot.on('message', async message => {
   	}
   
   if(cmd === `${prefix}bingo`){
-	const embed = new Discord.RichEmbed()
-	.setColor("RED")
-	.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-	if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         let y = Math.floor(Math.random() * (Math.floor(75) - Math.ceil(1) + 1)) + Math.ceil(1);
         let x = null;
 
@@ -538,10 +506,6 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}zabij`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         let aUser = message.mentions.users.first() || message.author || message.user.id;
         message.channel.send(`**OHO!** Użytkownik **${aUser.tag}** został(a) zabity(a) przez **${message.author.tag}**!`).then(Message => {
             setTimeout(() => { Message.edit(`**YA!** Trwa odradzanie...`); }, 1000);
@@ -550,10 +514,6 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}say`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         //message.delete();
         if (!message.member.roles.find(r => r.id === "457105125886918667")) return message.channel.send("**Użytkowniku!** Nie posiadasz wymaganych uprawnień do użycia tej komendy!");
         //if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie posiadasz wymaganych uprawnień, musisz mieć rangę `JRMODERATOR`.");
@@ -565,10 +525,6 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}votekick`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         if (!message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔓Moderator` (lub wyższa) może użyć tej komendy.");
         const agree    = "✅";
         const disagree = "❎";
@@ -629,10 +585,6 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}ascii`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         ascii.font(args.join(' '), 'Doom', function(rendered) {
           rendered = rendered.trimRight();
     
@@ -646,10 +598,6 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}profile` || cmd === `${prefix}userinfo`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         let aUser = message.mentions.users.first() || message.author;
         const userinfo = new Discord.RichEmbed()
         .setColor("FFA07A")
@@ -668,10 +616,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}upr` || cmd === `${prefix}uprawnienia`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         if (message.member.roles.find(r => r.id === "455426439433551883")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Właściciel`.");
         if (message.member.roles.find(r => r.id === "455430899861815296")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Starszy Administrator`.");
         if (message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Administrator`.");
@@ -684,10 +628,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}server` || cmd === `${prefix}serverinfo`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
 
         let sicon = message.guild.iconURL;
@@ -711,10 +651,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}channel`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**Obywatelu!** Nie masz wystarczających uprawnień, wymaganych do użycia tej komendy.");
         let channelname = args.slice(1).join(" ");
@@ -729,10 +665,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}eval`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         if(message.author.id !== '396284197389729793') return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie masz uprawnień do tej komendy, wymagana ranga: `Założyciel(ka)`.")
         if(!args[0]) return message.channel.send(`${bot.emojis.find(`name`, 'error')}` + " Proszę, abyś podał(a) kod, który chcesz evalować. Bez niego nie da rady ;(.")
@@ -747,10 +679,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}help` | cmd === `${prefix}hilfe`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         const helpmsg = new Discord.RichEmbed()
         .setColor('RANDOM')
@@ -769,10 +697,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}shelp`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		if (!message.member.roles.find(r => r.id === "457821597227679745")) return message.channel.send("**Obywatelu!** Musisz być osobą z Support Teamu Cookie Community, aby móc użyć tej komendy.");
 		let shelp = new Discord.RichEmbed()
 		.setAuthor("Komendy Supportu")
@@ -782,10 +706,6 @@ bot.on('message', async message => {
 	}
 
 	if(cmd === `${prefix}ban`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         if (!message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔓Moderator` (lub wyższa) może użyć tej komendy.");
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -820,10 +740,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}removerole`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         if (!message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔏Administrator` (lub wyższa) może użyć tej komendy.");
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
@@ -846,10 +762,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}addrole`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
         if (!message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send("**Obywatelu!** Posiadasz zbyt niskie uprawnienia, aby użyć tej komendy.");
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
@@ -872,10 +784,6 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}avatar`){
-		const embed = new Discord.RichEmbed()
-		.setColor("RED")
-		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "39628419738972979") return message.channel.send(embed);
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let aUser = message.mentions.users.first() || message.author || message.user.id;
         let avEmbed = new Discord.RichEmbed()
