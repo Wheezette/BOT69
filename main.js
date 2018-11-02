@@ -289,13 +289,30 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}praca`){
-		if(args[0] === "wyslij"){
+		if(args[0] === "info"){
+			if(args[1] === "informatyk"){
+				let embed = new Discord.RichEmbed()
+				.setAuthor("Informacja o pracy")
+				.setDescription("Praca jako informatyk gwarantuje dobre zarobki oraz życie na dobrym poziomie")
+				.addField("Nazwa pracy:", "Informatyk")
+				.addField("Firma zapewniająca prace:", "**CC-SYSTEMS S.A**")
+				.addField("Zarobki (za 2 dni):", "`2500 PLN`")
+				.addField("Zarobki (za 30 dni):", "`37500 PLN`")
+				.setFooter("Zainteresowany(a)? Pracuj! cc!praca zatrudnij informatyk...")
+				message.channel.send(embed);
+			}
+		}
+		if(args[0] === "zatrudnij"){
 			if(!args[1]) {
-				message.channel.send("**WYŚLIJ PROŚBĘ O PRACĘ**\nChcesz pracować? Godnie zarabiać pieniądze? A może... Nie być bezrobotnym? Praca to idealne rozwiązanie!! \n \nMając pracę otrzymujesz:\n`Dzienne wynagrodzenie od ręki (PLN w CC-BOT)`\n`Nie będziesz bezrobotny(a)`\n`Szybciej zarabiasz pieniądze na zakupy w sklepie`... \n \n**Dostępne prace:** \n`Informatyk` - więcej info pod `praca info informatyk`...");
+				message.channel.send("**ZATRUDNIJ SIĘ W PRACY**\nChcesz pracować? Godnie zarabiać pieniądze? A może... Nie być bezrobotnym? Praca to idealne rozwiązanie!! \n \nMając pracę otrzymujesz:\n`Dzienne wynagrodzenie od ręki (PLN w CC-BOT)`\n`Nie będziesz bezrobotny(a)`\n`Szybciej zarabiasz pieniądze na zakupy w sklepie`... \n \n**Dostępne prace:** \n`Informatyk` - więcej info pod `praca info informatyk`...");
 			}
 			if(args[1] === "informatyk"){
-				bot.users.get("396284197389729793").send("**PROŚBA PRACY!**\n**Witaj, szefie/szefowo...**\nUżytkownik `" + message.author.tag + "`(`" + message.author.id + "`) chce pracować u Ciebie jako informatyk... \nUżyj `praca przyjmij " + `@${message.author.tag}` + "`, aby go(ją) przyjąć do pracy...");
-				message.channel.send("**Obywatelu!** Prośba o przyjęcie do pracy została wysłana!");
+				if(db.fetch(message.author.id + ".pracuje") === "tak") {
+					message.channel.send("**Obywatelu!** Masz już pracę. Jeśli chcesz ją zmienić napisz prośbę do właściciela.");
+				}
+				db.set(message.author.id + ".pracuje", === "tak");
+				db.set(message.author.id + ".praca", "informatyk");
+				message.channel.send("**Obywatelu!** Od teraz oficjalnie jesteś pracownikiem firmy informatycznej!");
 			}
 		}
 	}
