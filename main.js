@@ -233,16 +233,15 @@ bot.on('message', async message => {
         //client.channels.get("460676417064140801").send(embed);
     }
 	db.add(message.author.id  + '.money', 1);
-	
-	if(cmd === `${prefix}rep`) {
-		let userR = message.mentions.users.first();
+		//if(cmd === `${prefix}rep`) {
+		//let userR = message.mentions.users.first();
 		//db.add(userR.id + ".reputacja", 1);
-		if(Date.now() < db.fetch(message.author.id + ".repstatus")) {
-			return message.channel.send("**Obywatelu!** Reputację możesz przydzielać co 24h. Odczekaj ten czas.");
-		}
-		db.add(userR.id + ".reputacja", 1);
-		db.set(message.author.id + ".repstatus", Date.now() + 86400000);
-	}
+		//if(Date.now() < db.fetch(message.author.id + ".repstatus")) {
+			//return message.channel.send("**Obywatelu!** Reputację możesz przydzielać co 24h. Odczekaj ten czas.");
+		//}
+		//db.add(userR.id + ".reputacja", 1);
+		//db.set(message.author.id + ".repstatus", Date.now() + 86400000);
+	//}
 	if(cmd === `${prefix}money`){
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
 		if(!args[0]) {
@@ -572,8 +571,8 @@ bot.on('message', async message => {
         .addField("Pseudonim:", `${aUser.nickname ? aUser.nickname : "None"}`)
         .addField("Konto utworzone:", `${moment(aUser.createdAt).format('DD.MM.YYYY HH:mm:ss')}`)
         .addField("Dołączył(a) do serwera:", `${moment(aUser.joinedAt).format('DD.MM.YYYY HH:mm:ss')}`)
-		.addField("Ilość złoty (PLN):", "Użytkownik posiada " + "`" + `${db.fetch(aUser.id + '.money') || "0"}` + " PLN`.") 
-        .addField("Reputacja:", `${db.fetch(aUser.id + ".reputacja") || "0"} punktów reputacji.`)
+	.addField("Ilość złoty (PLN):", "Użytkownik posiada " + "`" + `${db.fetch(aUser.id + '.money') || "0"}` + " PLN`.") 
+     //   .addField("Reputacja:", `${db.fetch(aUser.id + ".reputacja") || "0"} punktów reputacji.`)
         .addField("Status:", `${aUser.presence.status.replace("dnd", "Niedostępny")}`)
         .addField("Aktualna gra:", `${aUser.presence.game ? aUser.presence.game.name : 'Brak'}`)
         .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
