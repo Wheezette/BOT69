@@ -237,12 +237,13 @@ bot.on('message', async message => {
 		let userR = message.mentions.users.first();
 		if(args[0] == `<@${message.author.id}>`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
 		if(args[0] == `@${message.author.tag}`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
-		db.add(userR.id + ".reputacja", 1);
+		//db.add(userR.id + ".reputacja", 1);
 		if(Date.now() < db.fetch(message.author.id + ".repstatus")) {
 			return message.channel.send("**Obywatelu!** Reputację możesz przydzielać co 24h. Odczekaj ten czas.");
 		}
 		db.add(userR.id + ".reputacja", 1);
 		db.set(message.author.id + ".repstatus", Date.now() + 86400000);
+		message.channel.send(`**HEJ HO!** Nadałeś(aś) punkt reputacji dla ${userR}!`);
 	}
 	if(cmd === `${prefix}money`){
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
