@@ -294,7 +294,7 @@ bot.on('message', async message => {
 				message.channel.send("**WYŚLIJ PROŚBĘ O PRACĘ**\nChcesz pracować? Godnie zarabiać pieniądze? A może... Nie być bezrobotnym? Praca to idealne rozwiązanie!! \n \nMając pracę otrzymujesz:\n`Dzienne wynagrodzenie od ręki (PLN w CC-BOT)`\n`Nie będziesz bezrobotny(a)`\n`Szybciej zarabiasz pieniądze na zakupy w sklepie`... \n \n**Dostępne prace:** \n`Informatyk` - więcej info pod `praca info informatyk`...");
 			}
 			if(args[1] === "informatyk"){
-				bot.users.get("396284197389729793").send("**Ktoś chce prace!**");
+				bot.users.get("396284197389729793").send("**PROŚBA PRACY!**\n**Witaj, szefie/szefowo...**\nUżytkownik `" + message.author.tag + "`(`" + message.author.id + "`) chce pracować u Ciebie jako informatyk... \nUżyj `praca przyjmij " + `@${message.author.tag}` + "`, aby go(ją) przyjąć do pracy...");
 			}
 		}
 	}
