@@ -332,15 +332,15 @@ bot.on('message', async message => {
 			message.channel.send(embed);
 		}
 		if(args[0] == "voucher") {
-			if(args[1] == "OTWARCIE") {
-				if(db.fetch(message.author.id + ".voucherjeden") === "wykorzystany") {
+			if(args[1] == "CC-SERVER") {
+				if(db.fetch(message.author.id + ".vouchercc") === "wykorzystany") {
 					//if(db.fetch(message.author.id + ".plec") === "Dziewczyna") return message.channel.send("**Obywatelko!** Już wykorzystałaś ten voucher... Był jednorazowy.");
 					//if(db.fetch(message.author.id + ".plec") === "Chlopak") return message.channel.send("**Obywatelu!** Już wykorzystałeś ten voucher... Był jednorazowy.");
-					return message.channel.send("**Obywatelu!** Już wykorzystałeś(aś) ten voucher...")
+					return message.channel.send("**Obywatelu!** Ten voucher został już przez Ciebie wykorzystany...")
 				}
-				db.add(message.author.id + '.money', 1000);
-				db.set(message.author.id + '.voucherjeden', "wykorzystany");
-				message.channel.send("**VOUCHER WYKORZYSTANY POMYŚLNIE**\nTwój voucher został pomyślnie wykorzystany... Dodał on Ci kwotę `1000 zł`.");
+				db.add(message.author.id + '.money', 2500);
+				db.set(message.author.id + '.vouchercc', "wykorzystany");
+				message.channel.send("**VOUCHER WYKORZYSTANY POMYŚLNIE**\nTwój voucher został pomyślnie wykorzystany... Dodał on Ci kwotę `2500 PLN`.");
 			}
 		}
 		if(args[0] == "kup") {
