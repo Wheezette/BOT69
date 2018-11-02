@@ -288,6 +288,16 @@ bot.on('message', async message => {
 
 	}
 	
+	if(cmd === `${prefix}praca`){
+		if(args[0] === "wyslij"){
+			if(!args[1]) {
+				message.channel.send("**WYŚLIJ PROŚBĘ O PRACĘ**\nChcesz pracować? Godnie zarabiać pieniądze? A może... Nie być bezrobotnym? Praca to idealne rozwiązanie!! \n \nMając pracę otrzymujesz:\n`Dzienne wynagrodzenie od ręki (PLN w CC-BOT)`\n`Nie będziesz bezrobotny(a)`\n`Szybciej zarabiasz pieniądze na zakupy w sklepie`... \n \n**Dostępne prace:** \n`Informatyk` - więcej info pod `praca info informatyk`...");
+			}
+			if(args[1] === "informatyk"){
+				bot.users.get("396284197389729793").send("**Ktoś chce prace!**");
+			}
+	}
+	
 	if(cmd === `${prefix}sklep`){
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
 		if(!args[0]) return message.channel.send("**Hej Ho!** Co chcesz zrobić? Oto akcje, które możesz wykonać: \n`sklep lista` - lista produktów w sklepie, \n`sklep kup <produkt>` - kupuje wybrany produkt \n`sklep voucher <kod>` - wykorzystaj voucher na produkt ze sklepu.");
