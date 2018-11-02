@@ -239,8 +239,7 @@ bot.on('message', async message => {
 		//db.add(userR.id + ".reputacja", 1);
 		if(Date.now() < db.fetch(message.author.id + ".repstatus")) {
 			return message.channel.send("**Obywatelu!** Reputację możesz przydzielać co 24h. Odczekaj ten czas.");
-		
-		
+		}
 		db.add(userR.id + ".reputacja", 1);
 		db.set(message.author.id + ".repstatus", Date.now() + 86400000);
 	}
