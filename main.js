@@ -656,9 +656,9 @@ bot.on('message', async message => {
         .addField('**NOWE!** Support Team ( ):', '`Użyj cc!shelp, aby zobaczyć komendy administracyjne!`')
         .addField('Zdjęcia (1):', '`cat` - randomowe zdjęcie kota.')
         .addField('**NOWE!** | Informacje (3):', '`serverinfo` - informacje o serwerze,\n`userinfo` - informacje o danym użytkowniku\n**WKRÓTCE!** `botinfo` - informacje o oznaczonym bocie znajdującym się na serwerze.')
-        .addField('**NOWE!** | Inne (2):', '`propozycja` - wysyła propozycję dot. serwera\n`rekutacja <open/close>` - otwiera rekrutację na serwerze')
-		.addField('**NOWE!** | Sklep (3):', '`sklep voucher <kod>` - wpisuje voucher na jakąś rangę/item\n`sklep <kup> <legenda/gigant>` - kupuje wybraną rangę vip\n`sklep lista` - lista itemów w sklepie\n`sklep funkcje <gigant/legenda>` - wyświetla funkcje podanej roli ze sklepu')
-		.addField('**NOWE!** Ekonomia (3):', "`daily` - odbiera dzienne kredyty\n`money` - wyświetla stan konta\n**WKRÓTCE!** `przelej @member <kwota>` - przelewa daną kwotę dla użytkownika.")
+        .addField('**NOWE!** | Inne (2):', '`rep` - przydziela użytkownikowi punkt reputacji\n`propozycja` - wysyła propozycję dot. serwera\n`rekutacja <open/close>` - otwiera rekrutację na serwerze')
+	.addField('**NOWE!** | Sklep (3):', '`sklep voucher <kod>` - wpisuje voucher na jakąś rangę/item\n`sklep <kup> <legenda/gigant>` - kupuje wybraną rangę vip\n`sklep lista` - lista itemów w sklepie\n`sklep funkcje <gigant/legenda>` - wyświetla funkcje podanej roli ze sklepu')
+	.addField('**NOWE!** Ekonomia (3):', "`daily` - odbiera dzienne kredyty\n`money` - wyświetla stan konta\n**WKRÓTCE!** `przelej @member <kwota>` - przelewa daną kwotę dla użytkownika.")
         .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
         message.channel.send(helpmsg);
 	}
