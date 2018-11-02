@@ -235,6 +235,8 @@ bot.on('message', async message => {
 	db.add(message.author.id  + '.money', 1);
 	if(cmd === `${prefix}rep`) {
 		let userR = message.mentions.users.first();
+		if(args[0] == `<@${message.author.id}>`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
+		if(args[0] == `@${message.author.tag}`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
 		db.add(userR.id + ".reputacja", 1);
 		if(Date.now() < db.fetch(message.author.id + ".repstatus")) {
 			return message.channel.send("**Obywatelu!** Reputację możesz przydzielać co 24h. Odczekaj ten czas.");
