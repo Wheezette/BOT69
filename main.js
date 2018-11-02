@@ -310,7 +310,7 @@ bot.on('message', async message => {
 				if(db.fetch(message.author.id + ".pracuje") === "tak") {
 					message.channel.send("**Obywatelu!** Masz już pracę. Jeśli chcesz ją zmienić napisz prośbę do właściciela.");
 				}
-				//db.set(message.author.id + ".pracuje", === "tak");
+				db.set(message.author.id + ".pracuje", === "tak");
 				//db.set(message.author.id + ".praca", "informatyk");
 				message.channel.send("**Obywatelu!** Od teraz oficjalnie jesteś pracownikiem firmy informatycznej!");
 			}
