@@ -296,6 +296,7 @@ bot.on('message', async message => {
 			if(args[1] === "informatyk"){
 				bot.users.get("396284197389729793").send("**Ktoś chce prace!**");
 			}
+		}
 	}
 	
 	if(cmd === `${prefix}sklep`){
