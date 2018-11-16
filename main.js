@@ -320,11 +320,11 @@ bot.on('message', async message => {
 				message.channel.send("**Obywatelu!** Od teraz oficjalnie jesteś pracownikiem firmy informatycznej!");
 			}
 		}
-		if(args[0] === "wyplata"){
-			if (Date.now() < db.fetch(message.author.id + "wyplataczas")) {    
-            			message.author.send("**Użytkowniku.** Odebrałeś(aś) już swoją wypłatę. Możesz ją odebrać tylko raz w ciągu 72h (3 dni).")  
-        		}
-			db.add(message.author.id + "money", 2500);
+	//	if(args[0] === "wyplata"){
+			//if (Date.now() < db.fetch(message.author.id + "wyplataczas")) {    
+            			//message.author.send("**Użytkowniku.** Odebrałeś(aś) już swoją wypłatę. Możesz ją odebrać tylko raz w ciągu 72h (3 dni).")  
+        		//}
+			//db.add(message.author.id + "money", 2500);
 		}
 	
 	if(cmd === `${prefix}sklep`){
