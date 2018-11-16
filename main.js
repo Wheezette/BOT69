@@ -10,12 +10,12 @@ bot.on("ready", e => {
 	setInterval (function (){
 	  var statusrand  = Math.floor(Math.random() * 8 + 1);
 	  if (statusrand === 1) {
-		bot.user.setActivity(`Sprawdź nowe funkcje już teraz!`);   
+		bot.user.setActivity(`#wkrotce`);   
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 2) {
-		bot.user.setActivity(`Użyj cc!help, a ujrzysz fajne rzeczy!`);
+		bot.user.setActivity(`Niebawem serwer VPS!`);
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
@@ -314,12 +314,18 @@ bot.on('message', async message => {
 				if(db.fetch(message.author.id + ".pracuje") === "tak") {
 					message.channel.send("**Obywatelu!** Masz już pracę. Jeśli chcesz ją zmienić napisz prośbę do właściciela.");
 				}
-				//db.set(message.author.id + ".pracuje", === "tak");
-				//db.set(message.author.id + ".praca", "informatyk");
+				db.set(message.author.id + ".pracuje", "tak");
+				db.set(message.author.id + ".praca", "informatyk");
+				db.set(message.author.id + ".wyplataczas", Date.now() + 259200000);
 				message.channel.send("**Obywatelu!** Od teraz oficjalnie jesteś pracownikiem firmy informatycznej!");
 			}
 		}
-	}
+		if(args[0] === "wyplata"){
+			if (Date.now() < db.fetch(message.author.id + "wyplataczas")) {    
+            			message.author.send("**Użytkowniku.** Odebrałeś(aś) już swoją wypłatę. Możesz ją odebrać tylko raz w ciągu 72h (3 dni).")  
+        		}
+			db.add(message.author.id + "money", 2500);
+		}
 	
 	if(cmd === `${prefix}sklep`){
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
@@ -404,24 +410,6 @@ bot.on('message', async message => {
 			}
 		}
 	}
-	if(cmd === `${prefix}ustaw`){
-		if(args[0] == "plec") {
-			if(args[1] == "dziewczyna") {
-				db.set(message.author.id + ".plec", "Dziewczyna");
-				let embed = new Discord.RichEmbed()
-				.setAuthor("Ustawienie zapisane...")
-				.setDescription("Twoja plec zostala ustawiona na `Dziewczyna`.")
-				message.channel.send(embed);
-			}
-			if(args[1] == "chlopak") {
-				db.set(message.author.id + ".plec", "Chlopak");
-				let embed = new Discord.RichEmbed()
-				.setAuthor("Ustawienie zapisane...")
-				.setDescription("Twoja plec zostala ustawiona na `Chlopak`.")
-				message.channel.send(embed);
-			}
-		}
-	}
 	
 	if(cmd === `${prefix}vip`) {
 		const embed = new Discord.RichEmbed()
@@ -434,6 +422,10 @@ bot.on('message', async message => {
 			message.channel.send(embed);
 		}
 		if(args[0] == "ulepsz") {
+			if(db.fetch(message.author.id + ".money") < 50000) {
+					return message.channel.send("**Obywatelu!** Posiadasz za mało pieniędzy, aby ulepszyć swoją rangę vip.")
+			}
+			db.subtract(message.author.id + '.money', 50000);
 			message.channel.send(embed);
 		}
 	}
