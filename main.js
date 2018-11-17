@@ -237,7 +237,7 @@ bot.on('message', async message => {
 		const embed = new Discord.RichEmbed()
 		.setColor("RED")
 		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
-		if(message.author.id !== "39628419738972979") return message.channel.send(embed);
+		if(message.author.id !== "396284197389729793") return message.channel.send(embed);
 		let userR = message.mentions.users.first();
 		if(args[0] == `<@${message.author.id}>`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
 		if(args[0] == `@${message.author.tag}`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
@@ -320,12 +320,13 @@ bot.on('message', async message => {
 				message.channel.send("**Obywatelu!** Od teraz oficjalnie jesteś pracownikiem firmy informatycznej!");
 			}
 		}
-	//	if(args[0] === "wyplata"){
-			//if (Date.now() < db.fetch(message.author.id + "wyplataczas")) {    
-            			//message.author.send("**Użytkowniku.** Odebrałeś(aś) już swoją wypłatę. Możesz ją odebrać tylko raz w ciągu 72h (3 dni).")  
-        		//}
-			//db.add(message.author.id + "money", 2500);
+		if(args[0] === "wyplata"){
+			if (Date.now() < db.fetch(message.author.id + ".wyplataczas")) {    
+            			message.author.send("**Użytkowniku.** Odebrałeś(aś) już swoją wypłatę. Możesz ją odebrać tylko raz w ciągu 72h (3 dni).")  
+        		}
+			db.add(message.author.id + ".money", 2500);
 		}
+	}
 	
 	if(cmd === `${prefix}sklep`){
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
