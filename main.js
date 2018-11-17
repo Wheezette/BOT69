@@ -668,7 +668,7 @@ bot.on('message', async message => {
           .addField(`${bot.emojis.find(`name`, 'txt')} WYJŚCIE`, "```"+result+"```")
           .setColor("RANDOM")
           .setFooter(`Kod evalował(a) ${message.author.tag}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
-          message.channel.send(embed);
+          message.channel.send({ embed } else { error });
 	}
 	
 	if(cmd === `${prefix}help` | cmd === `${prefix}hilfe`){
