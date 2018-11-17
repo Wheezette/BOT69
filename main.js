@@ -163,7 +163,7 @@ bot.on("ready", e => {
 	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
 		
 	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie');
-		
+          
 	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
   
 	}, 7000);
@@ -200,7 +200,9 @@ bot.on("ready", e => {
   
   bot.on("guildMemberRemove", member => {
 	  const embed = new Discord.RichEmbed()
-	  .setAuthor("!")
+          .setColor("#F08080")
+          .setDescription("Żegnaj **${member.user.username}**. \n \nPrzykro nam, że już odchodzisz, \nzawsze możesz tu wrócić, \nale... Dlaczego odchodzisz?")
+          .setFooter("©2018 Cookie Community");
 	  bot.channels.get("505834357198684180").send(embed);
   });
   
