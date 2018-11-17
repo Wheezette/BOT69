@@ -200,15 +200,15 @@ bot.on("ready", e => {
   
   bot.on("guildMemberRemove", member => {
 	  const embed = new Discord.RichEmbed()
-	  .setAuthor("BAJO!")
-	  .setDescription(`Żegnaj ${member}...\nPrzykro nam, że już odchodzisz\nPowodzenia gdzie indziej... :cry:\n \n**Pozostało nas ${bot.guilds.get("454946768723902476").memberCount}**.`)
+	  .setAuthor("!")
 	  bot.channels.get("505834357198684180").send(embed);
   });
   
   bot.on("guildMemberAdd", member => {
 	  const embed = new Discord.RichEmbed()
-	  .setAuthor("SIEMANKO!")
-	  .setDescription(`Cześć ${member}...\nFajnie, że wybrałeś(aś) nasz serwer!\nPozostań na dłużej a nie pożałujesz... :wink:\n \n**Jest nas teraz ${bot.guilds.get("454946768723902476").memberCount}**.`)
+          .setColor("#FF5733")
+          .setDescription("Witaj **${member.user.username}** na **Cookie Community**. \n \nNa początek przeczytaj #regulamin,\nnastępnie zweryfikuj się na #weryfikacja,\npotem przystosuj serwer do swoich potrzeb (#ustawienia),\nno i zacznij korzystać z naszych kanałów.")
+          .setFooter("©2018 Cookie Community") //${bot.guilds.get("454946768723902476").memberCount}**.`)
 	  bot.channels.get("505834357198684180").send(embed);
   });
 
