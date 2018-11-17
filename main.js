@@ -167,8 +167,7 @@ bot.on("ready", e => {
 	  bot.guilds.get("454946768723902476").member("456018252158730250").setNickname('Cookie Community');
   
 	}, 7000);
-  });
-  
+  });  
   bot.on("ready", e => {
 	setInterval (function (){
 	  bot.channels.get("505866770880397352").edit({ name: '🔐 St'});    
@@ -201,7 +200,7 @@ bot.on("ready", e => {
   bot.on("guildMemberRemove", member => {
 	  const embed = new Discord.RichEmbed()
           .setColor("#F08080")
-          .setDescription("Żegnaj **${member.user.username}**. \n \nPrzykro nam, że już odchodzisz, \nzawsze możesz tu wrócić, \nale... Dlaczego odchodzisz?")
+          .setDescription(`Żegnaj **${member.user.username}**. \n \nPrzykro nam, że już odchodzisz, \nzawsze możesz tu wrócić, \nale... Dlaczego odchodzisz?`)
           .setFooter("©2018 Cookie Community");
 	  bot.channels.get("505834357198684180").send(embed);
   });
@@ -209,7 +208,7 @@ bot.on("ready", e => {
   bot.on("guildMemberAdd", member => {
 	  const embed = new Discord.RichEmbed()
           .setColor("#FF5733")
-          .setDescription("Witaj **${member.user.username}** na **Cookie Community**. \n \nNa początek przeczytaj #regulamin,\nnastępnie zweryfikuj się na #weryfikacja,\npotem przystosuj serwer do swoich potrzeb (#ustawienia),\nno i zacznij korzystać z naszych kanałów.")
+          .setDescription(`Witaj **${member.user.username}** na **Cookie Community**. \n \nNa początek przeczytaj #regulamin,\nnastępnie zweryfikuj się na #weryfikacja,\npotem przystosuj serwer do swoich potrzeb (#ustawienia),\nno i zacznij korzystać z naszych kanałów.`)
           .setFooter("©2018 Cookie Community") //${bot.guilds.get("454946768723902476").memberCount}**.`)
 	  bot.channels.get("505834357198684180").send(embed);
   });
