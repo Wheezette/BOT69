@@ -232,6 +232,42 @@ bot.on('message', async message => {
         //.setDescription(`Użytkownik ${message.author} (${message.author.id}) próbował(a) się zareklamować, ale nie minęło 24h.`)
         //client.channels.get("460676417064140801").send(embed);
     }
+	if (message.channel.id === "511242701413416982") { 
+		let embed = new Discord.RichEmbed()
+		.setAuthor("Nowa prosba o weryfikaje!")
+		.setDescription(`Użytkownik **${message.author.tag}** (id: **${message.author.id}**) prosi o weryfikację na serwerze **${message.guild.name}**.\n \nPoniżej masz krok po kroku jak przystąpić do weryfikacji.`)
+		.addField("KROK #1", "Udaj się na kanał #wer-admin-access i prześwietl użytkownika poprzez komendę `" + `cc!profile <@${message.author.id}>` + "`. Skopiuj komendę.") 	
+		.addField("KROK #2", "Jeśli nie masz zastrzeżeń, zweryfikuj użytkownika poprzez `" + `cc!wuser <@${message.author.id}>` + "`. Skopiuj komendę.")
+		.addField("Masz zastrzeżenia?", "Jesli uzytkownik wydal Ci sie podejrzany i nie chcesz narazac serwera na zle rzeczy, skontaktuj się z `" + `${bot.users.get("396284197389729793").tag}` + "` (jest on(a) aktualnie `" + `${bot.users.get("396284197389729793").status}` + "`).") 
+		.setFooter("Popelniaj zgodnie z podana instrukcja.");
+		if(db.fetch(message.author.id + ".weryfikacja") === "on"){
+			return;
+		}
+		
+		db.set(message.author.id + ".weryfikacja", "on")
+		bot.users.get("396284197389729793").send(embed);
+		bot.users.get("372026600989917195").send(embed);
+		bot.users.get("439129108392181773").send(embed);
+		bot.users.get("327516769004814349").send(embed);
+		bot.users.get("312831944679227402").send(embed);
+		bot.users.get("494017032283619329").send(embed);
+		bot.users.get("389835722082877440").send(embed);
+		bot.users.get("303868105279537152").send(embed);
+		bot.users.get("397067268070047746").send(embed);
+		//bot.users.get("t").send(embed);
+	}
+	
+	if(cmd === `${prefix}wuser`){
+		if (!message.member.roles.find(r => r.id === "511250044981215252")) return message.channel.send("**EJ TY!** Nie posiadasz wymaganych uprawnien do uzyia tej komendy!");
+		let wUser = message.mentions.users.first();
+		if(db.fetch(wUser.id + ".werstatus", "tak")){
+			message.channel.send("**Administratorze!** Ten uzytkownik jest juz zweryfikowany!");
+		}
+		const guildMember = wUser.member;
+		wUser.addRole('456849366515187742');
+		db.set(wUser.id + ".werstatus", "tak");
+		message.channel.send(`**Administratorze!** Uzytkownik ${wUser} zostal poprawnie zweryfikowany!`);
+	}
 	//db.add(message.author.id  + '.money', 1);
 	if(cmd === `${prefix}rep`) {
 		const embed = new Discord.RichEmbed()
