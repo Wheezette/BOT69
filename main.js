@@ -260,11 +260,11 @@ bot.on('message', async message => {
 	
 	if(cmd === `${prefix}wuser`){
 		if (!message.member.roles.find(r => r.id === "511250044981215252")) return message.channel.send("**EJ TY!** Nie posiadasz wymaganych uprawnien do uzyia tej komendy!");
-		let wUser = message.mentions.users.first();
+		let wUser = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
 		if(db.fetch(wUser.id + ".werstatus", "tak")){
 			message.channel.send("**Administratorze!** Ten uzytkownik jest juz zweryfikowany!");
 		}
-		const guildMember = wUser.member;
+		//const guildMember = wUser.member;
 		wUser.addRole('456849366515187742');
 		db.set(wUser.id + ".werstatus", "tak");
 		message.channel.send(`**Administratorze!** Uzytkownik ${wUser} zostal poprawnie zweryfikowany!`);
