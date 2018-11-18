@@ -5,6 +5,7 @@ const ascii = require("ascii-art");
 const moment = require("moment");
 //const fs = require("fs");
 const ms = require("ms");
+moment.locale('pl');
 
 bot.on("ready", e => {
 	setInterval (function (){
@@ -634,9 +635,9 @@ bot.on('message', async message => {
         .setAuthor(`Profil ${aUser.username}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
         .setThumbnail(aUser.displayAvatarURL)
         .addField("ID:", `${aUser.id}`)
-        .addField("Pseudonim:", `${aUser.nickname ? aUser.nickname : "None"}`)
-        .addField("Konto utworzone:", `${moment(aUser.createdAt).format('DD.MM.YYYY HH:mm:ss')}`)
-        .addField("Dołączył(a) do serwera:", `${moment(aUser.joinedAt).format('DD.MM.YYYY HH:mm:ss')}`)
+        .addField("Pseudonim:", `${aUser.nickname ? aUser.nickname : "Brak"}`)
+        .addField("Konto utworzone:", `${moment(aUser.createdAt).format('dddd, DD.MM.YYYY HH:mm:ss')}`)
+        .addField("Dołączył(a) do serwera:", `${moment(aUser.joinedAt).format('dddd, DD.MM.YYYY HH:mm:ss')}`)
 	.addField("Ilość złoty (PLN):", "Użytkownik posiada " + "`" + `${db.fetch(aUser.id + '.money') || "0"}` + " PLN`.") 
         .addField("Reputacja:", `${db.fetch(aUser.id + ".reputacja") || "0"} punktów reputacji.`)
         .addField("Status:", `${aUser.presence.status.replace("dnd", "Niedostępny")}`)
