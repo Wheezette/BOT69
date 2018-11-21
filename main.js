@@ -251,7 +251,7 @@ bot.on('message', async message => {
 		.addField("KROK #1", "Udaj się na kanał #wer-admin-access i prześwietl użytkownika poprzez komendę `" + `cc!profile <@${message.author.id}>` + "`. Skopiuj komendę.") 	
 		.addField("KROK #2", "Jeśli nie masz zastrzeżeń, zweryfikuj użytkownika poprzez `" + `cc!wuser <@${message.author.id}>` + "`. Skopiuj komendę.")
 		.addField("Masz zastrzeżenia?", "Jesli uzytkownik wydal Ci sie podejrzany i nie chcesz narazac serwera na zle rzeczy, skontaktuj się z `" + `${bot.users.get("396284197389729793").tag}` + "` (jest aktualnie `" + `${bot.users.get("396284197389729793").presence.status}` + "`).") 
-		.setFooter("Popelniaj zgodnie z podana instrukcja.");
+		.setFooter("Popełniaj zgodnie z podaną instrukcją.");
 		if(db.fetch(message.author.id + ".weryfikacja") === "on"){
 			return;
 		}
@@ -266,7 +266,7 @@ bot.on('message', async message => {
 		bot.users.get("389835722082877440").send(embed);
 		bot.users.get("303868105279537152").send(embed);
 		bot.users.get("397067268070047746").send(embed);
-		//bot.users.get("t").send(embed);
+		bot.users.get("266603823244640256").send(embed);
 	}
 	
 	if(cmd === `${prefix}wuser`){
