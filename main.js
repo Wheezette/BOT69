@@ -308,7 +308,7 @@ bot.on('message', async message => {
 			//message.channel.send("Twój stan konta wynosi: " + stan + " zł.");
 		}
 		if(args[0] == "add") {
-			if (!message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+			if (!message.member.roles.find(r => r.id === "511250016120209418")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
 			const userxd = message.mentions.users.first() || args[1];
 			if (!userxd) {
 				return message.channel.send("**Administratorze!** Musisz oznaczyć użytkownika, lub podać jego ID!")
@@ -319,12 +319,12 @@ bot.on('message', async message => {
 			const user = message.mentions.users.first().id || args[1];
 			db.add(user  + '.money', args[2]);
 			let embed = new Discord.RichEmbed()
-		.setDescription("Dodałeś(aś) pieniądze dla użytkownika " + userxd.tag + ". Jego nowy stan konta to: " + `${db.fetch(userxd.id + ".money")}` + ".")
+			.setDescription("Dodałeś(aś) pieniądze dla użytkownika " + userxd.tag + ". Jego nowy stan konta to: " + `${db.fetch(userxd.id + ".money")}` + ".")
 			message.channel.send(embed);
 			//message.channel.send("Pieniądze dla użytkownika "  + userxd + " zostały dodane!");
 		}
 		if(args[0] == "remove") {
-			if (!message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+			if (!message.member.roles.find(r => r.id === "511250016120209418")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
 			const userxd = message.mentions.users.first() || args[1];
 		
 			if (!userxd) {
@@ -510,6 +510,7 @@ bot.on('message', async message => {
 	} //
 	
 	if(cmd === `${prefix}kick`){
+		if(!message.member.roles.find(r => r.id === "511250044981215252")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         	let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         	if(!kUser) return message.channel.send("**Administratorze!** Proszę, abyś oznaczył(a) poprawnego użytkownika!");
         	let kReason = args.join(" ").slice(22);
@@ -557,7 +558,7 @@ bot.on('message', async message => {
 	
 	if(cmd === `${prefix}say`){
         //message.delete();
-        if (!message.member.roles.find(r => r.id === "457105125886918667")) return message.channel.send("**Użytkowniku!** Nie posiadasz wymaganych uprawnień do użycia tej komendy!");
+        if(!message.member.roles.find(r => r.id === "511249815527751702")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         //if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie posiadasz wymaganych uprawnień, musisz mieć rangę `JRMODERATOR`.");
         if (args[0].includes('@everyone')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Przepraszam bardzo, w tym celu bota nie użyjesz!`);
         if (args[0].includes('@here')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Przepraszam bardzo, w tym celu bota nie użyjesz!`);
@@ -567,7 +568,7 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}votekick`){
-        if (!message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔓Moderator` (lub wyższa) może użyć tej komendy.");
+        if(!message.member.roles.find(r => r.id === "511250044981215252")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         const agree    = "✅";
         const disagree = "❎";
 
@@ -693,8 +694,9 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}channel`){
+	if(!message.member.roles.find(r => r.id === "511249815527751702")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
-        if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**Obywatelu!** Nie masz wystarczających uprawnień, wymaganych do użycia tej komendy.");
+        //if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**Obywatelu!** Nie masz wystarczających uprawnień, wymaganych do użycia tej komendy.");
         let channelname = args.slice(1).join(" ");
         let everyone = message.guild.roles.find(`name`, "@everyone");
         if(args[0] == 'lock') return message.channel.overwritePermissions(everyone, { SEND_MESSAGES: false, ADD_REACTIONS: false }), message.channel.send(`${bot.emojis.find(`name`, 'success')} Wedle twojego życzenia zablokowałem kanał. Inni już nie mogą tu pisać.`);
@@ -743,12 +745,12 @@ bot.on('message', async message => {
 		let shelp = new Discord.RichEmbed()
 		.setAuthor("Komendy Supportu")
 		.setDescription("Poniżej znajdują się komendy administracyjne wraz z opisem...")
-		.addField("**NOWE!** Support Team (3):", "`ban @member <powód>` - banuje podanego użytkownika z podanym powodem... Później też wysyła wiadomość z banem na kanał #modlogi\n`kick @member powód` - wyrzuca użytkownika z serwera za podany powód... Wysyła wiadomość z tym na #modlogi\n**WKRÓTCE!** `warn @member <powód>` - ostrzega użytkownika... 15 warnów = ban.")
+		.addField("**NOWE!** Support Team (3):", "`ban @member <powód>` - banuje podanego użytkownika z podanym powodem... Później też wysyła wiadomość z banem na kanał #modlogi (wymagany poziom uprawnien `Moderator`)\n`kick @member powód` - wyrzuca użytkownika z serwera za podany powód... Wysyła wiadomość z tym na #modlogi (wymagany poziom uprawnien `JrModerator`)\n**WKRÓTCE!** `warn @member <powód>` - ostrzega użytkownika... 15 warnów = ban. (wymagany poziom uprawnien `Helper`)")
 		message.channel.send(shelp);
 	}
 
 	if(cmd === `${prefix}ban`){
-        if (!message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔓Moderator` (lub wyższa) może użyć tej komendy.");
+        if(!message.member.roles.find(r => r.id === "511249815527751702")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!bUser) return message.channel.send(":x: Musisz oznaczyć poprawnego uzytkownika!");
@@ -782,7 +784,7 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}removerole`){
-        if (!message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔏Administrator` (lub wyższa) może użyć tej komendy.");
+        if (!message.member.roles.find(r => r.id === "511249815527751702")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔏Administrator` (lub wyższa) może użyć tej komendy.");
         if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
         let rMember = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
@@ -792,6 +794,14 @@ bot.on('message', async message => {
         let gRole = message.guild.roles.find(`name`, role);
         if(!gRole) return message.channel.send(`**Administratorze!** Podana przez Ciebie rola nie istnieje. Sprawdź pisownię, być może jest tam błąd.`);
 
+	if(args[0] === "[WŻ] Właściciel") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+	if(args[0] === "[WŻ] Opiekun Globalny") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+	if(args[0] === "[SPT] Wsparcie Serwera") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+	if(args[0] === "Administrator") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+	if(args[0] === "Moderator") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+	if(args[0] === "JrModerator") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+	if(args[0] === "Helper") return message.channel.send("**EJ TY!** Nie możesz odebrać tej roli, jest to zablokowane!");
+		
         if(!rMember.roles.has(gRole.id)) return message.reply('On nie ma tej roli.');
         await(rMember.removeRole(gRole.id));
 
@@ -804,7 +814,7 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}addrole`){
-        if (!message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send("**Obywatelu!** Posiadasz zbyt niskie uprawnienia, aby użyć tej komendy.");
+        if (!message.member.roles.find(r => r.id === "511250016120209418")) return message.channel.send("**Obywatelu!** Posiadasz zbyt niskie uprawnienia, aby użyć tej komendy.");
         //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
         let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -814,6 +824,13 @@ bot.on('message', async message => {
         let gRole = message.guild.roles.find(`name`, role);
         if(!gRole) return message.channel.send(`**Administratorze!** Podana przez Ciebie rola nie istnieje. Sprawdź pisownie, być może jest błąd.`);
 
+	if(args[0] === "[WŻ] Właściciel") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
+	if(args[0] === "[WŻ] Opiekun Globalny") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
+	if(args[0] === "[SPT] Wsparcie Serwera") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
+	if(args[0] === "Administrator") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
+	if(args[0] === "Moderator") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
+	if(args[0] === "JrModerator") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
+	if(args[0] === "Helper") return message.channel.send("**EJ TY!** Nie możesz nadać tej roli, jest to zablokowane!");
         if(rMember.roles.has(gRole.id)) return;
         await(rMember.addRole(gRole.id));
 
