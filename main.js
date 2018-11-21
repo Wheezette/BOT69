@@ -236,11 +236,11 @@ bot.on('message', async message => {
     }
 	if (message.channel.id === "511242701413416982") { 
 		let embed = new Discord.RichEmbed()
-		.setAuthor("Nowa prosba o weryfikaje!")
+		.setAuthor("Nowa prosba o weryfikacje!")
 		.setDescription(`Użytkownik **${message.author.tag}** (id: **${message.author.id}**) prosi o weryfikację na serwerze **${message.guild.name}**.\n \nPoniżej masz krok po kroku jak przystąpić do weryfikacji.`)
 		.addField("KROK #1", "Udaj się na kanał #wer-admin-access i prześwietl użytkownika poprzez komendę `" + `cc!profile <@${message.author.id}>` + "`. Skopiuj komendę.") 	
 		.addField("KROK #2", "Jeśli nie masz zastrzeżeń, zweryfikuj użytkownika poprzez `" + `cc!wuser <@${message.author.id}>` + "`. Skopiuj komendę.")
-		.addField("Masz zastrzeżenia?", "Jesli uzytkownik wydal Ci sie podejrzany i nie chcesz narazac serwera na zle rzeczy, skontaktuj się z `" + `${bot.users.get("396284197389729793").tag}` + "` (jest on(a) aktualnie `" + `${bot.users.get("396284197389729793").status}` + "`).") 
+		.addField("Masz zastrzeżenia?", "Jesli uzytkownik wydal Ci sie podejrzany i nie chcesz narazac serwera na zle rzeczy, skontaktuj się z `" + `${bot.users.get("396284197389729793").tag}` + "` (jest aktualnie `" + `${bot.users.get("396284197389729793").presence.status}` + "`).") 
 		.setFooter("Popelniaj zgodnie z podana instrukcja.");
 		if(db.fetch(message.author.id + ".weryfikacja") === "on"){
 			return;
@@ -269,6 +269,7 @@ bot.on('message', async message => {
 		wUser.addRole('456849366515187742');
 		db.set(wUser.id + ".werstatus", "tak");
 		message.channel.send(`**Administratorze!** Uzytkownik ${wUser} zostal poprawnie zweryfikowany!`);
+		wUser.send("**Witamy!** Zostałeś(aś) zweryfikowany(a) przez **admina** na naszym serwerze, a mianowicie **Cookie Community**! Baw się dobrze. \n~~Pozdrawiamy, CC TEAM :).");
 	}
 	//db.add(message.author.id  + '.money', 1);
 	if(cmd === `${prefix}rep`) {
