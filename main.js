@@ -641,7 +641,7 @@ bot.on('message', async message => {
     }
 	
 	if(cmd === `${prefix}profile` || cmd === `${prefix}userinfo`){
-        let aUser = message.mentions.users.first() || message.author;
+        let aUser = message.guild.member(message.mentions.users.first() || message.author) ||  message.guild.members.get(args[0]);
         const userinfo = new Discord.RichEmbed()
         .setColor("FFA07A")
         .setAuthor(`Profil ${aUser.username}`, `https://cdn.discordapp.com/emojis/472480341299298304.png?v=1`)
