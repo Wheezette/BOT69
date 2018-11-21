@@ -56,47 +56,57 @@ bot.on("ready", e => {
   
   bot.on("ready", e => {
 	setInterval (function (){
-	  bot.channels.get("505809906033754150").edit({ name: 'W'});   
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 H'});   
 	  
-	  bot.channels.get("505809906033754150").edit({ name: 'Wi'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 He'});
   
-	  bot.channels.get("505809906033754150").edit({ name: 'Wit'}); 
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Hej'}); 
   
-	  bot.channels.get("505809906033754150").edit({ name: 'Wita'});
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Hejk'});
   
-	  bot.channels.get("505809906033754150").edit({ name: 'Witam'});  
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Hejka'});  
   
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Hejka,'});
   
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy n'});  
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Hejka, B'});  
   
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na'}); 
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Hejka, Ba'}); 
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na s'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Hejka, Baw'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na se'});
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Hejka, Baw s'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na ser'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Hejka, Baw si'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serw'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Hejka, Baw się'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwe'});
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Hejka, Baw się d'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwer'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Hejka, Baw się do'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwerz'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Hejka, Baw się dob'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwerze'});
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Hejka, Baw się dobr'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'Witamy na serwerze!'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Hejka, Baw się dobrz'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: 'To'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Hejka, Baw się dobrze'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: ' To już'});
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Hejka, Baw się dobrze!'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: '  To już V'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Zostań'});
 		
-	  bot.channels.get("505809906033754150").edit({ name: ' To już V edycja!'});
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 na'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 dłużej'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Zostań na dłużej!'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: '🔵 Zostań'});
+	
+	  bot.channels.get("505809906033754150").edit({ name: '🌕 Zostań na'});
+		
+	  bot.channels.get("505809906033754150").edit({ name: '🔴 Zostań na dłużej!'});
 		
 	  //bot.channels.get("505809906033754150").edit({ name: 'To już V edycja!'});
   
