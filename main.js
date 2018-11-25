@@ -84,34 +84,19 @@ bot.on("ready", e => {
   
   bot.on("ready", e => {
 	setInterval (function (){
-	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);    
+	  bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);    
 	  
-	  bot.channels.get("505827628603801611").setName(`${bot.guilds.get("454946768723902476").roles.get("457106935720706048").members.size} partnerów`);
+	  bot.channels.get("515916480865370128").setName(`${bot.guilds.get("454946768723902476").roles.get("516271724627623958").members.size} partnerów`);
   
-	  bot.channels.get("505829821482532871").setName(`${bot.guilds.get("454946768723902476").roles.get("457821597227679745").members.size} adminów`); 
+	  bot.channels.get("515916401328783360").setName(`${bot.guilds.get("454946768723902476").roles.get("516274086306119691").members.size} adminów`); 
   
-	  bot.channels.get("505831581571612693").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
+	  bot.channels.get("515916332580077616").setName(`${bot.guilds.get("454946768723902476").roles.get("516272942406172684").members.size} botów`);
+		
+	  bot.channels.get("515916718556577793").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
   
-	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);  
+	  bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);
   
-	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);
-  
-	}, 7000);
-  });
-  
-  bot.on("ready", e => {
-	setInterval (function (){
-	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);    
-	  
-	  bot.channels.get("505827628603801611").setName(`${bot.guilds.get("454946768723902476").roles.get("457106935720706048").members.size} partnerów`);
-  
-	  bot.channels.get("505829821482532871").setName(`${bot.guilds.get("454946768723902476").roles.get("457821597227679745").members.size} adminów`); 
-  
-	  bot.channels.get("505831581571612693").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
-  
-	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);  
-  
-	  bot.channels.get("505824891384365056").setName(`${bot.guilds.get("454946768723902476").memberCount}os / 1000os`);
+	  bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);
   
 	}, 7000);
   });
@@ -150,29 +135,29 @@ bot.on("ready", e => {
   });  
   bot.on("ready", e => {
 	setInterval (function (){
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 St'});    
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});    
 	  
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Stre'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});
   
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
   
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Ad'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});
   
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admi'});  
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});  
   
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admina'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
 		
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 St'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});
 		
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Stre'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});
 		
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
 		
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Ad'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});
 		
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admi'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});
 		
-	  bot.channels.get("505866770880397352").edit({ name: '🔐 Strefa Admina'});
+	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
   
 	}, 10000);
   });
@@ -182,7 +167,7 @@ bot.on("ready", e => {
           .setColor("#F08080")
           .setDescription(`Żegnaj **${member.user.username}**. \n \nPrzykro nam, że już odchodzisz, \nzawsze możesz tu wrócić, \nale... Dlaczego odchodzisz?`)
           .setFooter("©2018 Cookie Community");
-	  bot.channels.get("505834357198684180").send(embed);
+	  bot.channels.get("515918919551287296").send(embed);
   });
   
   bot.on("guildMemberAdd", member => {
@@ -190,7 +175,7 @@ bot.on("ready", e => {
           .setColor("#FF5733")
           .setDescription(`Witaj **${member.user.username}** na **Cookie Community**. \n \nNa początek przeczytaj #regulamin,\nnastępnie zweryfikuj się na #weryfikacja,\npotem przystosuj serwer do swoich potrzeb (#ustawienia),\nno i zacznij korzystać z naszych kanałów.`)
           .setFooter("©2018 Cookie Community") //${bot.guilds.get("454946768723902476").memberCount}**.`)
-	  bot.channels.get("505834357198684180").send(embed);
+	  bot.channels.get("515918919551287296").send(embed);
   });
 
 bot.on('message', async message => {
@@ -201,7 +186,7 @@ bot.on('message', async message => {
     let msg = message.content.startsWith;
     let args = messageArray.slice(1);
 	
-	if (message.channel.id === "505836751928164352") { 
+	if (message.channel.id === "515926952599748609") { 
         if (Date.now() < db.fetch(message.author.id + ".reklama")) {    
             message.delete();
             return message.author.send("**Wysłałeś(aś) już jedną reklamę.** \nOznacza to, że kolejną możesz wysłać, gdy minie 24h. ```~~Cookie Community```")  
