@@ -186,6 +186,10 @@ bot.on('message', async message => {
     let msg = message.content.startsWith;
     let args = messageArray.slice(1);
 	
+	db.add(message.author.id  + '.levelpkt', 1);
+	if(db.fetch(message.author.id + '.levelpkt') === "2"){
+		message.channel.send("LVL UP!")
+	}
 	if (message.channel.id === "515926952599748609") { 
         if (Date.now() < db.fetch(message.author.id + ".reklama")) {    
             message.delete();
