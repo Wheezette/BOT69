@@ -82,24 +82,24 @@ bot.on("ready", e => {
 	}, 7000);
   });
   
-  bot.on("ready", e => {
-	setInterval (function (){
-	  bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);    
+  //bot.on("ready", e => {
+	//setInterval (function (){
+	  //bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);    
 	  
-	  bot.channels.get("515916480865370128").setName(`${bot.guilds.get("454946768723902476").roles.get("516271724627623958").members.size} partnerów`);
+	  //bot.channels.get("515916480865370128").setName(`${bot.guilds.get("454946768723902476").roles.get("516271724627623958").members.size} partnerów`);
   
-	  bot.channels.get("515916401328783360").setName(`${bot.guilds.get("454946768723902476").roles.get("516274086306119691").members.size} adminów`); 
+	  //bot.channels.get("515916401328783360").setName(`${bot.guilds.get("454946768723902476").roles.get("516274086306119691").members.size} adminów`); 
   
-	  bot.channels.get("515916332580077616").setName(`${bot.guilds.get("454946768723902476").roles.get("516272942406172684").members.size} botów`);
+	  //bot.channels.get("515916332580077616").setName(`${bot.guilds.get("454946768723902476").roles.get("516272942406172684").members.size} botów`);
 		
-	  bot.channels.get("515916718556577793").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
+	  //bot.channels.get("515916718556577793").setName(`${moment(this.date).format('DD.MM.YYYY')}`);
   
-	  bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);
+	  //bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);
   
-	  bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);
+	  //bot.channels.get("515916263613005837").setName(`${bot.guilds.get("454946768723902476").memberCount} os. / 1000 os.`);
   
-	}, 7000);
-  });
+	//}, 7000);
+  //});
   
   bot.on("ready", e => {
 	setInterval (function (){
@@ -970,7 +970,7 @@ bot.on('message', async message => {
         const m = await message.channel.send("Ping :ping_pong: ");
         m.edit(`:ping_pong: Pong! ${m.createdTimestamp - message.createdTimestamp}ms. API is ${Math.round(bot.ping)}ms`);
     }
-	
+
 });
 
 bot.login(process.env.TOKEN);
