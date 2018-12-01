@@ -3,6 +3,7 @@ const db = require('quick.db');
 const bot = new Discord.Client();
 const ascii = require("ascii-art");
 const moment = require("moment");
+const randomstring = require("randomstring");
 //const fs = require("fs");
 const ms = require("ms");
 moment.locale('pl');
@@ -171,11 +172,17 @@ bot.on("ready", e => {
   });
   
   bot.on("guildMemberAdd", member => {
+	  let vercode = randomstring.generate(6);
+	  const embeds = new Discord.RichEmbed()
+	  .setAuthor("WITAJ NA SERWERZE!")
+	  .setDescription("**O tak! Witaj na Cookie Community!**\nNa poczatek musisz sie zweryfikowac, przeczytaj ponizej. \n \n1. Wejdz na nasz serwer i na kanal #weryfikacja,\n2. Przepisz na kanale #weryfikacja ponizej podany kod.\n3. Tu juz nic nie ma, milego korzystania z serwera. \n \n**TWOJ KOD:** `" + vercode + "`. \n \nPopelniaj zgodnie z instrukcja.");
 	  const embed = new Discord.RichEmbed()
           .setColor("#FF5733")
           .setDescription(`Witaj **${member.user.username}** na **Cookie Community**. \n \nNa początek przeczytaj #regulamin,\nnastępnie zweryfikuj się na #weryfikacja,\npotem przystosuj serwer do swoich potrzeb (#ustawienia),\nno i zacznij korzystać z naszych kanałów.`)
           .setFooter("©2018 Cookie Community") //${bot.guilds.get("454946768723902476").memberCount}**.`)
 	  bot.channels.get("515918919551287296").send(embed);
+	  member.user.send(embeds);
+	  db.set(member.user.id + ".vercode", vercode);
   });
 
 bot.on('message', async message => {
@@ -186,10 +193,74 @@ bot.on('message', async message => {
     let msg = message.content.startsWith;
     let args = messageArray.slice(1);
 	
-	db.add(message.author.id  + '.levelpkt', 1);
-	if(db.fetch(message.author.id + '.levelpkt') === "2"){
-		message.channel.send("LVL UP!")
+	if(message.channel.id === "518477164119588864"){
+		if(message.content === db.fetch(message.author.id + ".vercode")){
+			message.delete();
+			message.author.send("**GOTOWE!**\nZostales/as pomyslnie zweryfikowany/a, twoj kod byl poprawny. Milego korzystania z serwera!")
+			message.member.addRole("515943158006284288");
+		}
+		if(message.content !== db.fetch(message.author.id + ".vercode")){
+			message.author.send("**Wpisany kod jest niepoprawny.** \nUdaj sie do administratora w celu uzyskania nowego kodu.");
+		}
 	}
+	db.add(message.author.id + ".lvl", 1);
+	if(db.fetch(message.author.id + ".lvl") === 50) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 1** (**50 PKT**). Na nastepny poziom wymagane jest **100 PKT**!");
+		const guildMember = message.member;
+		guildMember.addRole('518446251545460747');
+	}
+	if(db.fetch(message.author.id + ".lvl") === 100) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 2** (**100 PKT**). Na nastepny poziom wymagane jest **200 PKT**!");
+		const guildMember = message.member;
+		guildMember.addRole('518446293224521776');
+	}
+	if(db.fetch(message.author.id + ".lvl") === 200) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 3** (**200 PKT**). Na nastepny poziom wymagane jest **250 PKT**! \n \n**UWAGA!**\nWraz z poziomem 3 odblokowales/as dostep do kanalu <#515926952599748609>.");
+		const guildMember = message.member;
+		guildMember.addRole('518446324962820097');
+	}
+	if(db.fetch(message.author.id + ".lvl") === 250) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 4** (**250 PKT**). Na nastepny poziom wymagane jest **400 PKT**!");
+		//const guildMember = message.member;
+		//guildMember.addRole('457049316385882113');
+	}
+	
+	if(db.fetch(message.author.id + ".lvl") === 400) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 5** (**250 PKT**). Na nastepny poziom wymagane jest **550 PKT**!");
+		//const guildMember = message.member;
+		//guildMember.addRole('457049316385882113');
+	}
+	
+	if(db.fetch(message.author.id + ".lvl") === 550) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 6** (**250 PKT**). Na nastepny poziom wymagane jest **700 PKT**!");
+		//const guildMember = message.member;
+		//guildMember.addRole('457049316385882113');
+	}
+	
+	if(db.fetch(message.author.id + ".lvl") === 700) {
+		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 7** (**250 PKT**). Jest to aktualnie ostatni mozliwy poziom do zdobycia.");
+		//const guildMember = message.member;
+		//guildMember.addRole('457049316385882113');
+	}
+	
+	if(message.channel.id === "518379161744572427"){
+		message.delete();
+		message.guild.channels.get("518449781849325579").send(`**NOWA PROSBA O PARTNERSTWO:**\n**Uzytkownik:** ${message.author.tag} (**${message.author.id}**)\n**Id prosby:** ${randomstring.generate(4)}\n \n${message.content}`);
+	}
+	
+	if(message.channel.id === "518379383547756544"){
+		message.delete();
+		message.guild.channels.get("518449812748763163").send(`**NOWE PODANIE:**\n**Uzytkownik:** ${message.author.tag} (**${message.author.id}**)\n**Id podania:** ${randomstring.generate(4)}\n \n**INFO O UZYTKOWNIKU:** \n**Username:** ${message.author.username}\n**Tag:** ${message.author.discriminator}\n**Dolaczyl do serwera:** ${moment(message.member.joinedAt).format('dddd, DD.MM.YYYY HH:mm:ss')}\n**Utworzyl konto:** ${moment(message.author.createdAt).format('dddd, DD.MM.YYYY HH:mm:ss')}.`);
+		message.guild.channels.get("518449812748763163").send(`${message.content}`);
+		message.author.send(`**Kopia podania wyslanego:**`);
+		message.author.send(`${message.content}`);
+	}
+	
+	if(message.channel.id === "518379459125051402"){
+		message.delete();
+		message.guild.channels.get("518449838736539651").send(`**NOWA PROSBA O YOUTUBERA:**\n**Uzytkownik:** ${message.author.tag} (**${message.author.id}**)\n**Id prosby:** ${randomstring.generate(4)}\n \n${message.content}`);
+	}
+	
 	if (message.channel.id === "515926952599748609") { 
         if (Date.now() < db.fetch(message.author.id + ".reklama")) {    
             message.delete();
