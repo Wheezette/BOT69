@@ -273,30 +273,30 @@ bot.on('message', async message => {
         //.setDescription(`Użytkownik ${message.author} (${message.author.id}) próbował(a) się zareklamować, ale nie minęło 24h.`)
         //client.channels.get("460676417064140801").send(embed);
     }
-	if (message.channel.id === "511242701413416982") { 
-		let embed = new Discord.RichEmbed()
-		.setAuthor("Nowa prosba o weryfikacje!")
-		.setDescription(`Użytkownik **${message.author.tag}** (id: **${message.author.id}**) prosi o weryfikację na serwerze **${message.guild.name}**.\n \nPoniżej masz krok po kroku jak przystąpić do weryfikacji.`)
-		.addField("KROK #1", "Udaj się na kanał #wer-admin-access i prześwietl użytkownika poprzez komendę `" + `cc!profile <@${message.author.id}>` + "`. Skopiuj komendę.") 	
-		.addField("KROK #2", "Jeśli nie masz zastrzeżeń, zweryfikuj użytkownika poprzez `" + `cc!wuser <@${message.author.id}>` + "`. Skopiuj komendę.")
-		.addField("Masz zastrzeżenia?", "Jesli uzytkownik wydal Ci sie podejrzany i nie chcesz narazac serwera na zle rzeczy, skontaktuj się z `" + `${bot.users.get("396284197389729793").tag}` + "` (jest aktualnie `" + `${bot.users.get("396284197389729793").presence.status}` + "`).") 
-		.setFooter("Popełniaj zgodnie z podaną instrukcją.");
-		if(db.fetch(message.author.id + ".weryfikacja") === "on"){
-			return;
-		}
+//	if (message.channel.id === "511242701413416982") { 
+	//	let embed = new Discord.RichEmbed()
+	//	.setAuthor("Nowa prosba o weryfikacje!")
+	//	.setDescription(`Użytkownik **${message.author.tag}** (id: **${message.author.id}**) prosi o weryfikację na serwerze **${message.guild.name}**.\n \nPoniżej masz krok po kroku jak przystąpić do weryfikacji.`)
+		//.addField("KROK #1", "Udaj się na kanał #wer-admin-access i prześwietl użytkownika poprzez komendę `" + `cc!profile <@${message.author.id}>` + "`. Skopiuj komendę.") 	
+		//.addField("KROK #2", "Jeśli nie masz zastrzeżeń, zweryfikuj użytkownika poprzez `" + `cc!wuser <@${message.author.id}>` + "`. Skopiuj komendę.")
+	//	.addField("Masz zastrzeżenia?", "Jesli uzytkownik wydal Ci sie podejrzany i nie chcesz narazac serwera na zle rzeczy, skontaktuj się z `" + `${bot.users.get("396284197389729793").tag}` + "` (jest aktualnie `" + `${bot.users.get("396284197389729793").presence.status}` + "`).") 
+	//.setFooter("Popełniaj zgodnie z podaną instrukcją.");
+	//	if(db.fetch(message.author.id + ".weryfikacja") === "on"){
+			//return;
+	//	}
 		
-		db.set(message.author.id + ".weryfikacja", "on")
-		bot.users.get("396284197389729793").send(embed);
-		bot.users.get("372026600989917195").send(embed);
-		bot.users.get("439129108392181773").send(embed);
-		bot.users.get("327516769004814349").send(embed);
-		bot.users.get("312831944679227402").send(embed);
-		bot.users.get("494017032283619329").send(embed);
-		bot.users.get("389835722082877440").send(embed);
-		bot.users.get("303868105279537152").send(embed);
-		bot.users.get("397067268070047746").send(embed);
-		bot.users.get("266603823244640256").send(embed);
-	}
+	//	db.set(message.author.id + ".weryfikacja", "on")
+	//	bot.users.get("396284197389729793").send(embed);
+	//	bot.users.get("372026600989917195").send(embed);
+	//	bot.users.get("439129108392181773").send(embed);
+	//	bot.users.get("327516769004814349").send(embed);
+	//	bot.users.get("312831944679227402").send(embed);
+//		bot.users.get("494017032283619329").send(embed);
+	//	bot.users.get("389835722082877440").send(embed);
+	//	bot.users.get("303868105279537152").send(embed);
+	//	bot.users.get("397067268070047746").send(embed);
+	//	bot.users.get("266603823244640256").send(embed);
+//	}
 	
 	if(cmd === `${prefix}wuser`){
 		if (!message.member.roles.find(r => r.id === "511250044981215252")) return message.channel.send("**EJ TY!** Nie posiadasz wymaganych uprawnien do uzyia tej komendy!");
@@ -337,7 +337,7 @@ bot.on('message', async message => {
 			//message.channel.send("Twój stan konta wynosi: " + stan + " zł.");
 		}
 		if(args[0] == "add") {
-			if (!message.member.roles.find(r => r.id === "511250016120209418")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+			if (!message.member.roles.find(r => r.id === "515934422688858122")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
 			const userxd = message.mentions.users.first() || args[1];
 			if (!userxd) {
 				return message.channel.send("**Administratorze!** Musisz oznaczyć użytkownika, lub podać jego ID!")
@@ -353,7 +353,7 @@ bot.on('message', async message => {
 			//message.channel.send("Pieniądze dla użytkownika "  + userxd + " zostały dodane!");
 		}
 		if(args[0] == "remove") {
-			if (!message.member.roles.find(r => r.id === "511250016120209418")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+			if (!message.member.roles.find(r => r.id === "515934422688858122")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
 			const userxd = message.mentions.users.first() || args[1];
 		
 			if (!userxd) {
@@ -539,7 +539,7 @@ bot.on('message', async message => {
 	} //
 	
 	if(cmd === `${prefix}kick`){
-		if(!message.member.roles.find(r => r.id === "511250044981215252")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+		if(!message.member.roles.find(r => r.id === "515934422688858122")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         	let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         	if(!kUser) return message.channel.send("**Administratorze!** Proszę, abyś oznaczył(a) poprawnego użytkownika!");
         	let kReason = args.join(" ").slice(22);
@@ -554,8 +554,8 @@ bot.on('message', async message => {
         	.setFooter("Użytkownik został wyrzucony!")
         	.setAuthor(`${kUser.user.tag}, ${kUser.id}`, `${kUser.user.displayAvatarURL}`);
 
-        	let kickChannel = message.guild.channels.find(`name`, "modlogs");
-        	if(!kickChannel) return message.channel.send("**Administratorze!** Kanał `kary-nadawane` nie istnieje. Zgłoś to do jednego z właścicieli, aby go stworzył.");
+        	//let kickChannel = message.guild.channels.find(`name`, "modlogs");
+        	//if(!kickChannel) return message.channel.send("**Administratorze!** Kanał `kary-nadawane` nie istnieje. Zgłoś to do jednego z właścicieli, aby go stworzył.");
 
         	message.channel.send(`**O tak!** Użytkownik **${kUser}** został wyrzucony z serwera za **${kReason}**!`);
        		message.guild.member(kUser).kick(kReason);
@@ -587,7 +587,7 @@ bot.on('message', async message => {
 	
 	if(cmd === `${prefix}say`){
         //message.delete();
-        if(!message.member.roles.find(r => r.id === "511249815527751702")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+        if(!message.member.roles.find(r => r.id === "515934502137102336")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
         //if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie posiadasz wymaganych uprawnień, musisz mieć rangę `JRMODERATOR`.");
         if (args[0].includes('@everyone')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Przepraszam bardzo, w tym celu bota nie użyjesz!`);
         if (args[0].includes('@here')) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Przepraszam bardzo, w tym celu bota nie użyjesz!`);
@@ -688,15 +688,17 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}upr` || cmd === `${prefix}uprawnienia`){
-        if (message.member.roles.find(r => r.id === "455426439433551883")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Właściciel`.");
-        if (message.member.roles.find(r => r.id === "455430899861815296")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Starszy Administrator`.");
-        if (message.member.roles.find(r => r.id === "456851721570746370")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Administrator`.");
-        if (message.member.roles.find(r => r.id === "456851799861624835")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Admin`.");
-        if (message.member.roles.find(r => r.id === "456851627740102657")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Moderator`.");
-        if (message.member.roles.find(r => r.id === "457105125886918667")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Młodszy Moderator`.");
-        
-        if (message.member.roles.find(r => r.id === "456849366515187742")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `Społeczność`.");
-        if (message.member.roles.find(r => r.id === "454946768723902476")) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Wygląda na to, że nie posiadasz żadnej roli. Zgłoś się jak najszybciej do administratora.`)
+        if (message.member.roles.find(r => r.id === "455426439433551883")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `WŁAŚCICIEL` (**9**).");
+        if (message.member.roles.find(r => r.id === "455430899861815296")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `OPIEKUN GLOBALNY` (**8**).");
+        if (message.member.roles.find(r => r.id === "515934035093094400")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `ADMIN` (**7**).");
+        if (message.member.roles.find(r => r.id === "515933614597472295")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `JRADMIN` (**6**).");
+        if (message.member.roles.find(r => r.id === "515934137014812672")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `ST.MOD` (**5**).");
+        if (message.member.roles.find(r => r.id === "515934422688858122")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `MOD` (**4**).");
+        if (message.member.roles.find(r => r.id === "elp")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `HELPER` (**2**).");
+	if (message.member.roles.find(r => r.id === "515934711063904256")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `REKRUT` (**1**, okres próbny).");
+		
+        if (message.member.roles.find(r => r.id === "456849366515187742")) return message.channel.send(`${bot.emojis.find(`name`, 'pass')}` + " Twój poziom uprawnień: `UŻYTKOWNIK` (**0**).");
+        if (message.member.roles.find(r => r.id === "454946768723902476")) return message.channel.send(`${bot.emojis.find(`name`, 'alert')} Twój poziom uprawnień jest *NIEZNANY*.`)
 	}
 	
 	if(cmd === `${prefix}server` || cmd === `${prefix}serverinfo`){
