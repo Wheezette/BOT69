@@ -159,44 +159,51 @@ bot.on('message', async message => {
 			db.set(message.author.id + ".vercode", vercode);
 		}
 	}
-	let zakazaneKanaly = ["456850069723807746", "515924708756160512", "515925010611830784"];
-	if(message.channel.id !== zakazaneKanaly){
-		db.add(message.author.id + ".lvl", 1);
-	}
+	//let zakazaneKanaly = ["456850069723807746", "515924708756160512", "515925010611830784"];
+	//if(message.channel.id !== zakazaneKanaly){
+	db.add(message.author.id + ".lvl", 1);
+	//}
 	if(db.fetch(message.author.id + ".lvl") === 50) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 1** (**50 PKT**). Na nastepny poziom wymagane jest **100 PKT**!");
 		const guildMember = message.member;
 		guildMember.addRole('518446251545460747');
 	}
 	if(db.fetch(message.author.id + ".lvl") === 100) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 2** (**100 PKT**). Na nastepny poziom wymagane jest **200 PKT**!");
 		const guildMember = message.member;
 		guildMember.addRole('518446293224521776');
 	}
 	if(db.fetch(message.author.id + ".lvl") === 200) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 3** (**200 PKT**). Na nastepny poziom wymagane jest **250 PKT**! \n \n**UWAGA!**\nWraz z poziomem 3 odblokowales/as dostep do kanalu <#515926952599748609>.");
 		const guildMember = message.member;
 		guildMember.addRole('518446324962820097');
 	}
 	if(db.fetch(message.author.id + ".lvl") === 250) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 4** (**250 PKT**). Na nastepny poziom wymagane jest **400 PKT**!");
 		//const guildMember = message.member;
 		//guildMember.addRole('457049316385882113');
 	}
 	
 	if(db.fetch(message.author.id + ".lvl") === 400) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 5** (**250 PKT**). Na nastepny poziom wymagane jest **550 PKT**!");
 		//const guildMember = message.member;
 		//guildMember.addRole('457049316385882113');
 	}
 	
 	if(db.fetch(message.author.id + ".lvl") === 550) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 6** (**250 PKT**). Na nastepny poziom wymagane jest **700 PKT**!");
 		//const guildMember = message.member;
 		//guildMember.addRole('457049316385882113');
 	}
 	
 	if(db.fetch(message.author.id + ".lvl") === 700) {
+		db.add(message.author.id + ".level", 1);
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 7** (**250 PKT**). Jest to aktualnie ostatni mozliwy poziom do zdobycia.");
 		//const guildMember = message.member;
 		//guildMember.addRole('457049316385882113');
@@ -269,7 +276,21 @@ bot.on('message', async message => {
 		message.channel.send(`**Administratorze!** Uzytkownik ${wUser} zostal poprawnie zweryfikowany!`);
 		wUser.send("**Witamy!** Zostałeś(aś) zweryfikowany(a) przez **admina** na naszym serwerze, a mianowicie **Cookie Community**! Baw się dobrze. \n~~Pozdrawiamy, CC TEAM :).");
 	}
-	//db.add(message.author.id  + '.money', 1);
+	
+	if(cmd === `${prefix}level`){
+		let lUser = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
+		message.channel.send("**CO CHCESZ WYKONAC?** \n \n`$level my` - sprawdza twoj level.\n`$level @mention` - sprawdza level oznaczonego uzytkownika.\n`$level info` - informacje na temat leveli oraz role i funkcje jakie mozna za nie zdobyc. \n \nW wiadomosci ponizej wpisz wybrana komende.");
+		if(args[0] == "my"){
+			message.channel.send("Twoj aktualny level to: `" + db.fetch(message.author.id + ".level") + "` (`" + db.fetch(message.author.id + ".lvl") + "` punktow.");
+		}
+		if(args[0] == "info"){
+			message.channel.send("**INFORMACJE: LEVEL** \n \nZa levele mozna zdobywac role z nazwa levelu (np. 1 LEVEL). Zdobycie levelu 3 rownoznaczne jest z odblokowaniem dostepu do kanalu reklam.");
+		}
+		if(args[0] == lUser){
+			message.channel.send("Level uzytkownika `" + lUser.user.tag + "` to: `" + db.fetch(lUser.user.id + ".level") + "` (`" + db.fetch(lUser.user.id + ".lvl") + "` punktow).");
+		}
+	}
+//db.add(message.author.id  + '.money', 1);
 	if(cmd === `${prefix}rep`) {
 		const embed = new Discord.RichEmbed()
 		.setColor("RED")
