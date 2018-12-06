@@ -12,42 +12,42 @@ moment.locale('pl');
 	setInterval (function (){
 	  var statusrand  = Math.floor(Math.random() * 8 + 1);
 	  if (statusrand === 1) {
-		bot.user.setActivity(`Hay Hay!`);   
+		bot.user.setActivity(`💲 Pełen Prestiż`);   
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 2) {
-		bot.user.setActivity(`Jak tam zycie?`);
+		bot.user.setActivity(`✔ Zobacz $help!`);
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 3) {
-		bot.user.setActivity(`Zostan na dluzej!`);  
+		bot.user.setActivity(`💜 Witaj w ekipie.`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 4) {
-		bot.user.setActivity(`Zobacz cc!sklep`);  
+		bot.user.setActivity(`🛒 Zakupy? $sklep!`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 5) {
-		bot.user.setActivity(`Dzieki, ze jestes z nami!`);  
+		bot.user.setActivity(`🎄 Idą święta.`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 6) {
-		bot.user.setActivity(`GGGGG!!`); 
+		bot.user.setActivity(`🎉 Zapraszaj innych.`); 
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand); 
 	  }
 	  if (statusrand === 7) {
-		bot.user.setActivity(`Zycie trwa dalej!`);  
+		bot.user.setActivity(`🎃 Niech moc będzie z wami.`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 8) {
-		bot.user.setActivity(`Badz z nami na dluzej!`);  
+		bot.user.setActivity(`🎨 Paint (Win XP)`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
@@ -114,35 +114,6 @@ moment.locale('pl');
 	}, 7000);
   });
   
-  bot.on("ready", e => {
-	setInterval (function (){
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});    
-	  
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});
-  
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
-  
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});
-  
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});  
-  
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
-		
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});
-		
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});
-		
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
-		
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Eventy etc.'});
-		
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Konkursy etc.'});
-		
-	  bot.channels.get("515923418877657088").edit({ name: '🎉 Giveawaye etc.'});
-  
-	}, 10000);
-  });
-  
   bot.on("guildMemberRemove", member => {
 	  const embed = new Discord.RichEmbed()
           .setColor("#F08080")
@@ -155,7 +126,7 @@ moment.locale('pl');
 	  let vercode = randomstring.generate(6);
 	  const embeds = new Discord.RichEmbed()
 	  .setAuthor("WITAJ NA SERWERZE!")
-	  .setDescription("**O tak! Witaj na Cookie Community!**\nNa poczatek musisz sie zweryfikowac, przeczytaj ponizej. \n \n1. Wejdz na nasz serwer i na kanal #weryfikacja,\n2. Przepisz na kanale #weryfikacja ponizej podany kod.\n3. Tu juz nic nie ma, milego korzystania z serwera. \n \n**TWOJ KOD:** `" + vercode + "`. \n \nPopelniaj zgodnie z instrukcja.");
+	  .setDescription("**O tak! Witaj na Cookie Community!**\nNa poczatek musisz sie zweryfikowac, przeczytaj ponizej. \n \n1. Wejdz na nasz serwer i na kanal #weryfikacja,\n2. Przepisz na kanale #weryfikacja ponizej podany kod.\n3. Tu juz nic nie ma, milego korzystania z serwera. \n \n**TWOJ KOD:** `" + vercode + "` (wygasa za 1h, jesli juz wygasl napisz byle co na kanale #weryfikacja, a otrzymasz nowy). \n \nPopelniaj zgodnie z instrukcja.");
 	  const embed = new Discord.RichEmbed()
           .setColor("#FF5733")
           .setDescription(`Witaj **${member.user.username}** na **Cookie Community**. \n \nNa początek przeczytaj #regulamin,\nnastępnie zweryfikuj się na #weryfikacja,\npotem przystosuj serwer do swoich potrzeb (#ustawienia),\nno i zacznij korzystać z naszych kanałów.`)
@@ -176,14 +147,22 @@ bot.on('message', async message => {
 	if(message.channel.id === "518477164119588864"){
 		if(message.content === db.fetch(message.author.id + ".vercode")){
 			message.delete();
-			message.author.send("**GOTOWE!**\nZostales/as pomyslnie zweryfikowany/a, twoj kod byl poprawny. Milego korzystania z serwera!")
+			message.author.send("**GOTOWE!**\nZostales/as pomyslnie zweryfikowany/a. Milego korzystania z serwera!")
 			message.member.addRole("515943158006284288");
 		}
 		if(message.content !== db.fetch(message.author.id + ".vercode")){
-			message.author.send("**Wpisany kod jest niepoprawny.** \nUdaj sie do administratora w celu uzyskania nowego kodu.");
+			let vercode = randomstring.generate(6);
+			//message.channel.send("**Wpisany kod jest niepoprawny.** \nSprawdz prywatne wiadomosci, aby zobaczyc nowy kod.");
+			let embede = new Discord.RichEmbed()
+			.setDescription("**Niepoprawny kod...** \n \nKod, ktory wpisales(as) na kanale #weryfikacja nie jest poprawny. \n \n**TWOJ NOWY KOD:** `" + vercode + "` (wygasa za 1h, jesli juz wygasl napisz na #weryfikacja byle co, a otrzymasz nowy). \n \nPrzepisz podany kod na kanale #weryfikacja.")
+			message.author.send(embede);
+			db.set(message.author.id + ".vercode", vercode);
 		}
 	}
-	db.add(message.author.id + ".lvl", 1);
+	let zakazaneKanaly = ["456850069723807746", "515924708756160512", "515925010611830784"];
+	if(message.channel.id !== zakazaneKanaly){
+		db.add(message.author.id + ".lvl", 1);
+	}
 	if(db.fetch(message.author.id + ".lvl") === 50) {
 		message.channel.send("**Oh yeah!** Zdobyles(as) nowy level, a mianowicie **LEVEL 1** (**50 PKT**). Na nastepny poziom wymagane jest **100 PKT**!");
 		const guildMember = message.member;
