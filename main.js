@@ -137,7 +137,7 @@ moment.locale('pl');
   });
 
 bot.on('message', async message => {
-    let prefix = "cc!";
+    let prefix = "$";
     //let prefix = konfiguracja.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
