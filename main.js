@@ -287,7 +287,7 @@ bot.on('message', async message => {
 			message.channel.send("**INFORMACJE: LEVEL** \n \nZa levele mozna zdobywac role z nazwa levelu (np. 1 LEVEL). Zdobycie levelu 3 rownoznaczne jest z odblokowaniem dostepu do kanalu reklam.");
 		}
 		if(args[0] == lUser){
-			message.channel.send("Level uzytkownika `" + lUser.user.tag + "` to: `" + db.fetch(lUser.user.id + ".level") + "` (`" + db.fetch(lUser.user.id + ".lvl") + "` punktow).");
+			message.channel.send("Level uzytkownika `" + lUser.user.tag + "` to: `" + db.fetch(lUser.user.id + ".level" || 0) + "` (`" + db.fetch(lUser.user.id + ".lvl") + "` punktow).");
 		}
 	}
 //db.add(message.author.id  + '.money', 1);
@@ -395,9 +395,10 @@ bot.on('message', async message => {
 			const embed = new Discord.RichEmbed()
 			.setAuthor("Sklep (1/1)")
 			.setDescription("Zainteresowany(a)? Możesz zakupić wybrany produkt poprzez komendę `sklep kup <nazwa>` np. `sklep kup legenda` - nazwę wpisujemy bez przedrostków typu [VIP] i wpisujemy z małej litery.")
-			.addField("[VIP] LEGENDA", "**Możliwości**: \nUżyj `sklep funkcje legenda`, aby zobaczyć możliwości tej rangi. \n \n**Koszt:** \n100.000zł \n \n**Opis:** \nLegenda - Jest to jedna z ról vip, ma z nich najwyższe funkcje/możliwości. Mając ją jesteś bardzo prestiżowym człowiekiem.")
-			.addField("[VIP] GIGANT", "**Możliwości**: \nUżyj `sklep funkcje gigant`, aby zobaczyć możliwości tej rangi. \n \n**Koszt:** \n50.000zł \n**Opis:** \nGigant - Jest to druga z ról vip, jest trochę mniejsza od powyższej roli - posiada mniejsze uprawnienia, ale to nie ma znaczenia bo i tak są super. Nie masz za wiele pieniędzy? Wybierz tą rangę!")
-			.setFooter("Aby sprawdzić swój stan konta, użyj cc!money");
+			.addField("[VIP] LEGENDA", "**Możliwości**: \nUżyj `$sklep funkcje legenda`, aby zobaczyć możliwości tej rangi. \n \n**Koszt:** \n100.000zł \n \n**Dostep:** \n*Odblokowany*\n \n**Opis:** \nLegenda - Jest to jedna z ról vip, ma z nich najwyższe funkcje/możliwości. Mając ją jesteś bardzo prestiżowym człowiekiem.")
+			.addField("[VIP] GIGANT", "**Możliwości**: \nUżyj `$sklep funkcje gigant`, aby zobaczyć możliwości tej rangi. \n \n**Koszt:** \n50.000zł\n \n**Dostep:** \n*Odblokowany* \n \n**Opis:** \nGigant - Jest to druga z ról vip, jest trochę mniejsza od powyższej roli - posiada mniejsze uprawnienia, ale to nie ma znaczenia bo i tak są super. Nie masz za wiele pieniędzy? Wybierz tą rangę!")
+			.addField("[PREMIUM] JEDNOROZEC", "**Możliwości**: \n*Brak informacji dot. tej rangi...* \n \n**Koszt:** \n*Brak informacji dot. tej rangi...* \n \n**Dostęp:** \n*Zablokowany* \n \n**Opis:** -")
+			.setFooter("Przed zakupem sprawdz swoj stan konta $money!");
 			message.channel.send(embed);
 		}
 		if(args[0] == "voucher") {
