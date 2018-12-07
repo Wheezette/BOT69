@@ -281,13 +281,13 @@ bot.on('message', async message => {
 		let lUser = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
 		message.channel.send("**CO CHCESZ WYKONAC?** \n \n`$level my` - sprawdza twoj level.\n`$level @mention` - sprawdza level oznaczonego uzytkownika.\n`$level info` - informacje na temat leveli oraz role i funkcje jakie mozna za nie zdobyc. \n \nW wiadomosci ponizej wpisz wybrana komende.");
 		if(args[0] == "my"){
-			message.channel.send("Twoj aktualny level to: `" + db.fetch(message.author.id + ".level") + "` (`" + db.fetch(message.author.id + ".lvl") + "` punktow.");
+			message.channel.send("Twoj aktualny level to: `" + `${db.fetch(lUser.user.id + ".level") || "0"}` + "` (`" + `${db.fetch(lUser.user.id + ".lvl") || "0"}` + "` punktow.");
 		}
 		if(args[0] == "info"){
 			message.channel.send("**INFORMACJE: LEVEL** \n \nZa levele mozna zdobywac role z nazwa levelu (np. 1 LEVEL). Zdobycie levelu 3 rownoznaczne jest z odblokowaniem dostepu do kanalu reklam.");
 		}
 		if(args[0] == lUser){
-			message.channel.send("Level uzytkownika `" + lUser.user.tag + "` to: `" + db.fetch(lUser.user.id + ".level" || 0) + "` (`" + db.fetch(lUser.user.id + ".lvl") + "` punktow).");
+			message.channel.send("Level uzytkownika `" + lUser.user.tag + "` to: `" + `${db.fetch(lUser.user.id + ".level") || "0"}` + "` (`" + `${db.fetch(lUser.user.id + ".lvl") || "0"}` + "` punktow).");
 		}
 	}
 //db.add(message.author.id  + '.money', 1);
@@ -296,16 +296,16 @@ bot.on('message', async message => {
 		.setColor("RED")
 		.setDescription("Bot jest w trybie PRAC TECHNICZNYCH i nie można z niego korzystać.\nPowód: Błędy...")
 	//	if(message.author.id !== "396284197389729793") return message.channel.send(embed);
-		let userR = message.mentions.users.first();
+		let rUser = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
 		if(args[0] == `<@${message.author.id}>`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
 		if(args[0] == `@${message.author.tag}`) return message.channel.send("**Obywatelu!** Nie możesz samemu sobie nadać reputacji!");
 		//db.add(userR.id + ".reputacja", 1);
 		if(Date.now() < db.fetch(message.author.id + ".repstatus")) {
 			return message.channel.send("**Obywatelu!** Reputację możesz przydzielać co 24h. Odczekaj ten czas.");
 		}
-		db.add(userR.id + ".reputacja", 1);
+		db.add(rUser.user.id + ".reputacja", 1);
 		db.set(message.author.id + ".repstatus", Date.now() + 86400000);
-		message.channel.send(`**HEJ HO!** Nadałeś(aś) punkt reputacji dla ${userR}!`);
+		message.channel.send(`**SUKCES!** Nadałeś(aś) punkt reputacji dla ${rUser.user.tag}!`);
 	}
 	if(cmd === `${prefix}money`){
 		//if(message.author.id !== "396284197389729793") return message.channel.send("**TA FUNKCJA JEST TESTOWANA** \nOznacza to, że może działać niepoprawnie... Dlatego nie możesz jej użyć.");
@@ -351,6 +351,13 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}praca`){
+		if(!args[0]){
+			const jobEmbed = new Discord.RichEmbed()
+			.setAuthor("PRACE - CC-JOBS")
+			.setDescription("Chcesz pracować i godnie zarabiać pieniądze? \n \nZacznij to robić! Z pracą rzeczywistość jest o wiele lepsza. \n \n**Oto lista poleceń CC-JOBS:**\n`$praca lista` - wyświetli listę dostępnych prac. \n`$praca zatrudnij (nazwa_pracy)` - zatrudnia Cię do danej pracy. \n`$praca wyplata` - pobiera wypłatę za pracę (co 1 dzień).")
+			.setFooter("Prace zapewnia wtyczka CC-JOBS.")
+			message.channel.send(jobEmbed);
+		}
 		if(args[0] === "info"){
 			if(args[1] === "informatyk"){
 				let embed = new Discord.RichEmbed()
@@ -370,12 +377,12 @@ bot.on('message', async message => {
 			}
 			if(args[1] === "informatyk"){
 				if(db.fetch(message.author.id + ".pracuje") === "tak") {
-					message.channel.send("**Obywatelu!** Masz już pracę. Jeśli chcesz ją zmienić napisz prośbę do właściciela.");
+					message.channel.send("**Obywatelu!** Masz już pracę. Jeśli chcesz ją zmienić, użyj komendy `$praca zmien (nowa_praca)`.");
 				}
 				db.set(message.author.id + ".pracuje", "tak");
 				db.set(message.author.id + ".praca", "informatyk");
 				db.set(message.author.id + ".wyplataczas", Date.now() + 259200000);
-				message.channel.send("**Obywatelu!** Od teraz oficjalnie jesteś pracownikiem firmy informatycznej!");
+				message.channel.send("**Obywatelu!** Od teraz nie jesteś bezrobotny/a i pracujesz w solidnej firmie informatycznej!");
 			}
 		}
 		if(args[0] === "wyplata"){
@@ -538,9 +545,9 @@ bot.on('message', async message => {
         	//let kickChannel = message.guild.channels.find(`name`, "modlogs");
         	//if(!kickChannel) return message.channel.send("**Administratorze!** Kanał `kary-nadawane` nie istnieje. Zgłoś to do jednego z właścicieli, aby go stworzył.");
 
-        	message.channel.send(`**O tak!** Użytkownik **${kUser}** został wyrzucony z serwera za **${kReason}**!`);
+        	message.channel.send(`**O tak!** Użytkownik **${kUser.user.tag}** został wyrzucony z serwera za **${kReason}**!`);
        		message.guild.member(kUser).kick(kReason);
-        	kickChannel.send(kickEmbed);
+        	//kickChannel.send(kickEmbed);
 
         	return;
   	}
@@ -750,24 +757,40 @@ bot.on('message', async message => {
 	.addField('**NOWE!** Ekonomia (3):', "`daily` - odbiera dzienne kredyty\n`money` - wyświetla stan konta\n**WKRÓTCE!** `przelej @member <kwota>` - przelewa daną kwotę dla użytkownika.")
         .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
         message.channel.send(helpmsg);
+	
+	if(message.member.roles.find(r => r.id === "")){
+	const helpmsg = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTitle('Moje komendy')
+        .setDescription("Zobacz moje komendy poniżej, są naprawde fajne!")
+        .addField('Podstawowe (5):', '`help` - wyświetla wszystkie komendy bota,\n`uprawnienia` - wyświetla twój poziom uprawnień na serwerze.')
+        .addField('Zabawa (6):', '`ascii` - wyświetla tekst w ascii,\n`reverse` - odwraca podany tekst,\n`choose` - wybiera jedną z podanych wcześniej opcji,\n`avatar` - avatar podanego użytkownika,\n`hug` - przytulasz podanego użytkownika,\n`8ball` - pytanie do bota.. On odpowie.')
+        .addField('**NOWE!** Support Team (6):', '`ban` - banuje danego użytkownika permanentnie.\n`kick` - wyrzuca danego użytkownika z serwera. \n`say` - wysyła wiadomość przez bota.\n`clear` - czyści podaną ilość wiadomości.\n~~`votekick` - włącza głosowanie o wyrzucenie użytkownika.~~ - *wycofane*\n`addrole` - nadaje podanemu użytkownikowi rolę.\n`removerole` - usuwa użytkownikowi podaną rolę.')
+        .addField('Zdjęcia (1):', '`cat` - randomowe zdjęcie kota.')
+        .addField('**NOWE!** | Informacje (3):', '`serverinfo` - informacje o serwerze,\n`userinfo` - informacje o danym użytkowniku\n**WKRÓTCE!** `botinfo` - informacje o oznaczonym bocie znajdującym się na serwerze.')
+        .addField('**NOWE!** | Inne (2):', '`rep` - przydziela użytkownikowi punkt reputacji\n`propozycja` - wysyła propozycję dot. serwera\n`rekutacja <open/close>` - otwiera rekrutację na serwerze')
+	.addField('**NOWE!** | Sklep (3):', '`sklep voucher <kod>` - wpisuje voucher na jakąś rangę/item\n`sklep <kup> <legenda/gigant>` - kupuje wybraną rangę vip\n`sklep lista` - lista itemów w sklepie\n`sklep funkcje <gigant/legenda>` - wyświetla funkcje podanej roli ze sklepu')
+	.addField('**NOWE!** Ekonomia (3):', "`daily` - odbiera dzienne kredyty\n`money` - wyświetla stan konta\n**WKRÓTCE!** `przelej @member <kwota>` - przelewa daną kwotę dla użytkownika.")
+        .setFooter(`${moment(message.createdAt).format('HH:mm:ss')} | Użyto przez ${message.author.tag}.`)
+        message.channel.send(helpmsg);
 	}
 	
-	if(cmd === `${prefix}shelp`){
-		if (!message.member.roles.find(r => r.id === "457821597227679745")) return message.channel.send("**Obywatelu!** Musisz być osobą z Support Teamu Cookie Community, aby móc użyć tej komendy.");
-		let shelp = new Discord.RichEmbed()
-		.setAuthor("Komendy Supportu")
-		.setDescription("Poniżej znajdują się komendy administracyjne wraz z opisem...")
-		.addField("**NOWE!** Support Team (3):", "`ban @member <powód>` - banuje podanego użytkownika z podanym powodem... Później też wysyła wiadomość z banem na kanał #modlogi (wymagany poziom uprawnien `Moderator`)\n`kick @member powód` - wyrzuca użytkownika z serwera za podany powód... Wysyła wiadomość z tym na #modlogi (wymagany poziom uprawnien `JrModerator`)\n**WKRÓTCE!** `warn @member <powód>` - ostrzega użytkownika... 15 warnów = ban. (wymagany poziom uprawnien `Helper`)")
-		message.channel.send(shelp);
-	}
+	//if(cmd === `${prefix}shelp`){
+		//if (!message.member.roles.find(r => r.id === "457821597227679745")) return message.channel.send("**Obywatelu!** Musisz być osobą z Support Teamu Cookie Community, aby móc użyć tej komendy.");
+		//let shelp = new Discord.RichEmbed()
+		//.setAuthor("Komendy Supportu")
+		//.setDescription("Poniżej znajdują się komendy administracyjne wraz z opisem...")
+		//.addField("**NOWE!** Support Team (3):", "`ban @member <powód>` - banuje podanego użytkownika z podanym powodem... Później też wysyła wiadomość z banem na kanał #modlogi (wymagany poziom uprawnien `Moderator`)\n`kick @member powód` - wyrzuca użytkownika z serwera za podany powód... Wysyła wiadomość z tym na #modlogi (wymagany poziom uprawnien `JrModerator`)\n**WKRÓTCE!** `warn @member <powód>` - ostrzega użytkownika... 15 warnów = ban. (wymagany poziom uprawnien `Helper`)")
+		//message.channel.send(shelp);
+	//}
 
 	if(cmd === `${prefix}ban`){
-        if(!message.member.roles.find(r => r.id === "515934137014812672")) return message.channel.send("**Obywatelu!** Nie masz wystarczającch uprawnień, aby użyć tej komendy.");
+        if(!message.member.roles.find(r => r.id === "515934137014812672")) return message.channel.send("**BŁĄD!** Nie masz uprawnień do użycia tej komendy.");
       //  if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-        if(!bUser) return message.channel.send(":x: Musisz oznaczyć poprawnego uzytkownika!");
+        if(!bUser) return message.channel.send("**BŁĄD!** Podany przez Ciebie użytkownik nie jest poprawny.");
         let bReason = args.join(" ").slice(22);
-        if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie posiadasz wymaganych uprawnień, musisz mieć rangę `MODERATOR`.");
+        //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " Nie posiadasz wymaganych uprawnień, musisz mieć rangę `MODERATOR`.");
         if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send(":lock: Ten użytkownik nie może zostać zbanowany!");
         if(!args[0]) return message.channel.send(`Nie podałeś powodu bana? Lub użytkownika? Więc bana nie ma :grinning:.`);
     
@@ -794,10 +817,14 @@ bot.on('message', async message => {
         //logiKomend.send(`Użytkownik: **${message.author.tag}** (**${message.author.id}**) \nUżył komendy **ban** na serwerze **${message.guild.name}**, zbanował **${bUser}** za **${bReason}**.`);
         return;
 	}
+		
+	if(cmd === `${prefix}plugins`){
+		message.channel.send("**Pluginy (3):** `CC-JOBS`, `CC-TOOLS`, `CC-ADMINS`.");
+	}
 	
 	if(cmd === `${prefix}removerole`){
         if (!message.member.roles.find(r => r.id === "515933614597472295")) return message.channel.send(`${bot.emojis.find(`name`, 'error')} Dostęp zablokowany! Nie posiadasz wymaganych uprawnień, tylko członek administracji o stanowisku ` + "`🔏Administrator` (lub wyższa) może użyć tej komendy.");
-        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+       // if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         //if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send(`${bot.emojis.find(`name`, 'lock')}` + " You do not have sufficient permissions. You must have `MANAGE_MEMBERS` permissions.");
         let rMember = message.guild.member(message.mentions.users.first()) ||  message.guild.members.get(args[0]);
         if(!rMember) return message.channel.send(`**Administratorze!** Proszę o podanie poprawnego użytkownika.`);
@@ -855,7 +882,7 @@ bot.on('message', async message => {
 	}
 	
 	if(cmd === `${prefix}avatar`){
-        if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
+        //if(konfiguracja.commands === "disabled") return message.channel.send(`${bot.emojis.find(`name`, 'error')} All commands in the bot have been disabled!`);
         let aUser = message.mentions.users.first() || message.author || message.user.id;
         let avEmbed = new Discord.RichEmbed()
         .setColor("RANDOM")
