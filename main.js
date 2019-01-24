@@ -57,13 +57,13 @@ moment.locale('pl');
   
   bot.on("ready", e => {
 	setInterval (function (){
-	  bot.channels.get("530135686330712094").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("454946768723902476").memberCount}`});    
+	  bot.channels.get("536922888805023764").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("536920630105341952").memberCount}`});    
 	  
-	  bot.channels.get("530135807470731295").edit({ name: `➤ Online: ${bot.guilds.get("454946768723902476").members.filter(m => m.presence.status === 'online').size}`});
+	  //bot.channels.get("530135807470731295").edit({ name: `➤ Online: ${bot.guilds.get("454946768723902476").members.filter(m => m.presence.status === 'online').size}`});
 		
-	  bot.channels.get("530135867579301889").edit({ name: `➤ Dzień: ${moment(this.date).format('DD.MM.YYYY')}`});
+	  //bot.channels.get("530135867579301889").edit({ name: `➤ Dzień: ${moment(this.date).format('DD.MM.YYYY')}`});
 		
-	  bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`}); 
+	  //bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`}); 
   
 	}, 7000);
   });
