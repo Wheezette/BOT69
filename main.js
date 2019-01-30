@@ -73,6 +73,20 @@ moment.locale('pl');
 
   bot.on("ready", e => {
 	setInterval (function (){
+		bot.channels.get("538656255103860748").edit({ name: `>>>   fяιєи∂ℓу нσυѕє   <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   яιєи∂ℓу нσυѕє  f <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   ιєи∂ℓу нσυѕє  fя <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   єи∂ℓу нσυѕє  fяι <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   и∂ℓу нσυѕє  fяιє <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   ∂ℓу нσυѕє  fяιєи <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   ℓу нσυѕє  fяιєи∂ <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   у нσυѕє  fяιєи∂ℓ <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   нσυѕє  fяιєи∂ℓу <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   συѕє  fяιєи∂ℓу н <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   υѕє fяιєи∂ℓу нσ  <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   ѕє fяιєи∂ℓу нσυ   <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   є fяιєи∂ℓу нσυѕ   <<<`});   
+		bot.channels.get("538656255103860748").edit({ name: `>>>   fяιєи∂ℓу нσυѕє   <<<`});   
 	//  bot.channels.get("538658607059959808").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("531073961564438528").memberCount}`});    
 
 	//  bot.channels.get("538658683324858388").edit({ name: `➤ Online: ${bot.guilds.get("531073961564438528").members.filter(m => m.presence.status === 'online').size}`});
