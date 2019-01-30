@@ -13,7 +13,7 @@ moment.locale('pl');
 	  var statusrand  = Math.floor(Math.random() * 8 + 1);
 	  if (statusrand === 1) {
 		bot.user.setActivity(`Friendly House`);   
-		bot.user.setStatus("dnd");
+		//bot.user.setStatus("dnd");
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
