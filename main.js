@@ -70,6 +70,19 @@ moment.locale('pl');
   
 	}, 7000);
   });
+
+  bot.on("ready", e => {
+	setInterval (function (){
+	//  bot.channels.get("538658607059959808").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("531073961564438528").memberCount}`});    
+
+	//  bot.channels.get("538658683324858388").edit({ name: `➤ Online: ${bot.guilds.get("531073961564438528").members.filter(m => m.presence.status === 'online').size}`});
+
+	 // bot.channels.get("538659344993091584").edit({ name: `➤ Data: ${moment(this.date).format('DD.MM.YYYY')}`});
+
+	//  bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`}); 
+  
+	}, 7000);
+  });
   
   bot.on("guildMemberRemove", member => {
 	  
