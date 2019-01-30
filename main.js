@@ -12,42 +12,45 @@ moment.locale('pl');
 	setInterval (function (){
 	  var statusrand  = Math.floor(Math.random() * 8 + 1);
 	  if (statusrand === 1) {
-		bot.user.setActivity(`Discord Servers`);   
+		bot.user.setActivity(`Friendly House`);   
+		bot.user.setStatus("dnd");
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 2) {
-		bot.user.setActivity(`Czekamy na Ciebie!`);
+		bot.user.setActivity(`Toxic House`);
+		 // bot.user.setStatus("online")
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 3) {
-		bot.user.setActivity(`ÿ #informacje`);  
+		bot.user.setActivity(`Family Friendly`);  
+		//bot.user.setActivity(
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 4) {
-		bot.user.setActivity(`ÿ #zgłoś-swój-serwer`);  
+		bot.user.setActivity(`Friendly House`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 5) {
-		bot.user.setActivity(`Zaproś innych!`);  
+		bot.user.setActivity(`Family Friendly Content`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 6) {
-		bot.user.setActivity(`To Cię nic nie kosztuje!`); 
+		bot.user.setActivity(`Toxic House`); 
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand); 
 	  }
 	  if (statusrand === 7) {
-		bot.user.setActivity(`Dodaj swój serwer!`);  
+		bot.user.setActivity(`Friendly Hause`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 8) {
-		bot.user.setActivity(`ÿ #informacje`);  
+		bot.user.setActivity(`Friendly House`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
@@ -59,11 +62,11 @@ moment.locale('pl');
 	setInterval (function (){
 	  bot.channels.get("536922888805023764").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("536920630105341952").memberCount}`});    
 	  
-	  //bot.channels.get("530135807470731295").edit({ name: `➤ Online: ${bot.guilds.get("454946768723902476").members.filter(m => m.presence.status === 'online').size}`});
+	  bot.channels.get("530135807470731295").edit({ name: `➤ Online: ${bot.guilds.get("454946768723902476").members.filter(m => m.presence.status === 'online').size}`});
 		
-	  //bot.channels.get("530135867579301889").edit({ name: `➤ Dzień: ${moment(this.date).format('DD.MM.YYYY')}`});
+	  bot.channels.get("530135867579301889").edit({ name: `➤ Dzień: ${moment(this.date).format('DD.MM.YYYY')}`});
 		
-	  //bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`}); 
+	  bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`}); 
   
 	}, 7000);
   });
