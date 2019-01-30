@@ -60,9 +60,9 @@ moment.locale('pl');
   
   bot.on("ready", e => {
 	setInterval (function (){
-	  bot.channels.get("538658607059959808").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("536920630105341952").memberCount}`});    
+	  bot.channels.get("538658607059959808").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("531073961564438528").memberCount}`});    
 	  
-	  bot.channels.get("538658683324858388").edit({ name: `➤ Online: ${bot.guilds.get("454946768723902476").members.filter(m => m.presence.status === 'online').size}`});
+	  bot.channels.get("538658683324858388").edit({ name: `➤ Online: ${bot.guilds.get("531073961564438528").members.filter(m => m.presence.status === 'online').size}`});
 		
 	  bot.channels.get("538659344993091584").edit({ name: `➤ Data: ${moment(this.date).format('DD.MM.YYYY')}`});
 		
