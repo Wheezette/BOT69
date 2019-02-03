@@ -12,45 +12,45 @@ moment.locale('pl');
 	setInterval (function (){
 	  var statusrand  = Math.floor(Math.random() * 8 + 1);
 	  if (statusrand === 1) {
-		bot.user.setActivity(`Friendly House`);   
+		bot.user.setActivity(`cc!help | Witamy na cookie community!`);   
 		//bot.user.setStatus("dnd");
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 2) {
-		bot.user.setActivity(`Toxic House`);
+		bot.user.setActivity(`cc!help | Powracamy do starej nazwy!`);
 		 // bot.user.setStatus("online")
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 3) {
-		bot.user.setActivity(`Family Friendly`);  
+		bot.user.setActivity(`cc!help | Niebawem więcej funkcji!`);  
 		//bot.user.setActivity(
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 4) {
-		bot.user.setActivity(`Friendly House`);  
+		bot.user.setActivity(`cc!help | Cookie Community`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 5) {
-		bot.user.setActivity(`Family Friendly Content`);  
+		bot.user.setActivity(`cc!help | Regulamin jest nie lamac go kurwa!`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 6) {
-		bot.user.setActivity(`Toxic House`); 
+		bot.user.setActivity(`cc!help | 0 komend, fajnie cnie`); 
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand); 
 	  }
 	  if (statusrand === 7) {
-		bot.user.setActivity(`Friendly Hause`);  
+		bot.user.setActivity(`cc!help | Zostan na dluzej!`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
 	  if (statusrand === 8) {
-		bot.user.setActivity(`Friendly House`);  
+		bot.user.setActivity(`cc!help | Zapraszaj innych!`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
 		console.log(statusrand);
 	  }
