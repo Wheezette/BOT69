@@ -129,7 +129,7 @@ bot.on('ready', () => {
   });
 
 bot.on('message', async message => {
-    let prefix = "$";
+    let prefix = "~";
     //let prefix = konfiguracja.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
@@ -139,7 +139,16 @@ bot.on('message', async message => {
     if(cmd === "<@549163783126384651>"){
 	message.channel.send("Hej, przybywam! W czymś pomóc? \nMój prefix to `~`.");
     }
-	    
+	
+    if(cmd === `${prefix}help`){
+	const hembed = new Discord.RichEmbed()
+        .setColor("GREEN")
+	.setAuthor("Spis Komend Bota")
+	.setDescription("Przedstawiam Ci moje aktualne komendy. Spójrz niżej!")
+	.addField("0 - Główne", "Brak komend w tej kategorii")
+        .setFooter("Dla Schron'u by Nastti#5705")
+        message.channel.send("hembed");
+    }
 	
 
  });
