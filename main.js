@@ -145,7 +145,7 @@ bot.on('message', async message => {
         .setColor("GREEN")
 	.setAuthor("Spis Komend Bota")
 	.setDescription("Przedstawiam Ci moje aktualne komendy. Spójrz niżej!")
-	.addField("0 - Główne", "Brak komend w tej kategorii")
+	.addField("1 - Główne", "`help` - spis wszystkich komend bota.")
         .setFooter("Dla Schron'u by Nastti#5705")
         message.channel.send(hembed);
     }
