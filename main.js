@@ -91,8 +91,7 @@ bot.on('ready', () => {
 	//  bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`});
 	}, 7000);
 
-	  
-  });
+	    });
 
   bot.on("ready", e => {
 	setInterval (function (){
@@ -129,15 +128,20 @@ bot.on('ready', () => {
 	  
   });
 
-//bot.on('message', async message => {
-    //let prefix = "$";
+bot.on('message', async message => {
+    let prefix = "$";
     //let prefix = konfiguracja.prefix;
-    //let messageArray = message.content.split(" ");
-    //let cmd = messageArray[0];
-    //let msg = message.content.startsWith;
-    //let args = messageArray.slice(1);
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let msg = message.content.startsWith;
+    let args = messageArray.slice(1);
+	
+    if(cmd === "<@549163783126384651>"){
+	message.channel.send("co");
+    }
+	    
 	
 
-//});
+ });
 
 bot.login(process.env.TOKEN);
