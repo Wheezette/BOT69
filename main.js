@@ -7,64 +7,68 @@ const moment = require("moment");
 //const fs = require("fs");
 //const ms = require("ms");
 moment.locale('pl');
-
-  bot.on("ready", e => {
-	setInterval (function (){
-	  var statusrand  = Math.floor(Math.random() * 8 + 1);
-	  if (statusrand === 1) {
-		bot.user.setActivity(`cc!help | Witamy na cookie community!`);   
+bot.on('ready', () => {
+   // console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
+    bot.user.setStatus(`dnd`);
+    bot.user.setActivity(`Schron`, {type: "WATCHING"});
+});
+//  bot.on("ready", e => {
+//	setInterval (function (){
+//	  var statusrand  = Math.floor(Math.random() * 8 + 1);
+	//  if (statusrand === 1) {
+	//	bot.user.setActivity(`cc!help | Witamy na cookie community!`);   
 		//bot.user.setStatus("dnd");
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
-	  if (statusrand === 2) {
-		bot.user.setActivity(`cc!help | Powracamy do starej nazwy!`);
-		 // bot.user.setStatus("online")
-		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
-	  if (statusrand === 3) {
-		bot.user.setActivity(`cc!help | Niebawem więcej funkcji!`);  
+	//	console.log(statusrand);
+	//  }
+//	  if (statusrand === 2) {
+	//	bot.user.setActivity(`cc!help | Powracamy do starej nazwy!`);
+	//	 // bot.user.setStatus("online")
+	//	//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+	//	console.log(statusrand);
+	//  }
+	//  if (statusrand === 3) {
+	//	bot.user.setActivity(`cc!help | Niebawem więcej funkcji!`);  
 		//bot.user.setActivity(
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
-	  if (statusrand === 4) {
-		bot.user.setActivity(`cc!help | Cookie Community`);  
+	//	console.log(statusrand);
+//	  }
+	//  if (statusrand === 4) {
+	//	bot.user.setActivity(`cc!help | Cookie Community`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
-	  if (statusrand === 5) {
-		bot.user.setActivity(`cc!help | Regulamin jest nie lamac go kurwa!`);  
+	//	console.log(statusrand);
+	 // }
+//	  if (statusrand === 5) {
+//		bot.user.setActivity(`cc!help | Regulamin jest nie lamac go kurwa!`);  
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
-	  if (statusrand === 6) {
-		bot.user.setActivity(`cc!help | 0 komend, fajnie cnie`); 
+	//	console.log(statusrand);
+//	  }
+//	  if (statusrand === 6) {
+		//bot.user.setActivity(`cc!help | 0 komend, fajnie cnie`); 
 		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand); 
-	  }
-	  if (statusrand === 7) {
-		bot.user.setActivity(`cc!help | Zostan na dluzej!`);  
-		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
-	  if (statusrand === 8) {
-		bot.user.setActivity(`cc!help | Zapraszaj innych!`);  
-		//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
-		console.log(statusrand);
-	  }
+		//console.log(statusrand); 
+	//  }
+	//  if (statusrand === 7) {
+	//	bot.user.setActivity(`cc!help | Zostan na dluzej!`);  
+	//	//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+	//	console.log(statusrand);
+//	  }
+//	  if (statusrand === 8) {
+//		bot.user.setActivity(`cc!help | Zapraszaj innych!`);  
+	//	//bot.channels.get("490431842424717322").setName(moment.utc(message.createdAt).format('HH:mm:ss'));
+	//	console.log(statusrand);
+//	  }
   
-	}, 10000);
-  });
+//	}, 10000);
+//  });
   
   bot.on("ready", e => {
 	setInterval (function (){
-	  bot.channels.get("538658607059959808").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("531073961564438528").memberCount}`});    
+//	  bot.channels.get("538658607059959808").edit({ name: `➤ Użytkownicy: ${bot.guilds.get("531073961564438528").memberCount}`});    
 	  
-	  bot.channels.get("538658683324858388").edit({ name: `➤ Online: ${bot.guilds.get("531073961564438528").members.filter(m => m.presence.status === 'online').size}`});
+//	  bot.channels.get("538658683324858388").edit({ name: `➤ Online: ${bot.guilds.get("531073961564438528").members.filter(m => m.presence.status === 'online').size}`});
 		
-	  bot.channels.get("538659344993091584").edit({ name: `➤ Data: ${moment(this.date).format('DD.MM.YYYY')}`});
+	//  bot.channels.get("538659344993091584").edit({ name: `➤ Data: ${moment(this.date).format('DD.MM.YYYY')}`});
 		
 	//  bot.channels.get("530135944242659328").edit({ name: `➤ Administracja: ${bot.guilds.get("454946768723902476").roles.get("515933131807784968").members.size}`}); 
   
