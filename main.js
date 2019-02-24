@@ -147,7 +147,7 @@ bot.on('message', async message => {
 	.setDescription("Przedstawiam Ci moje aktualne komendy. Spójrz niżej!")
 	.addField("0 - Główne", "Brak komend w tej kategorii")
         .setFooter("Dla Schron'u by Nastti#5705")
-        message.channel.send("hembed");
+        message.channel.send(hembed);
     }
 	
 
