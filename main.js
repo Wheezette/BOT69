@@ -137,7 +137,7 @@ bot.on('message', async message => {
     let args = messageArray.slice(1);
 	
     if(cmd === "<@549163783126384651>"){
-	message.channel.send("co");
+	message.channel.send("Hej, przybywam! W czymś pomóc? \nMój prefix to `~`.");
     }
 	    
 	
