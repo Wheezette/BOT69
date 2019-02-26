@@ -150,6 +150,19 @@ bot.on('message', async message => {
         message.channel.send(hembed);
     }
 	
+    if(cmd === `${prefix}kiss`){
+        let kissimg = ["https://cdn.discordapp.com/attachments/549321581143392288/549324459375591431/1f1ca2c09f171676503c2533319b354f.gif", "https://cdn.discordapp.com/attachments/549321581143392288/549324461170753567/d7f4cc76a4759f2930c83f7d4bda7215.gif", "https://cdn.discordapp.com/attachments/549321581143392288/549324461711687704/544772fea7e57b042e03f4fbe20cb953.gif"];
+        let math = Math.floor((Math.random() * kissimg.length));
+	let kissUser = message.mentions.users.first() || message.author || message.user.id;
+        let kissEmbed = new Discord.RichEmbed()
+        .setColor("GREEN")
+        //.addField(`${bot.emojis.find(`name`, 'cat')} Randomowy kot`, `Tutaj jest jeden z moich kotów:`)
+	.setAuthor(`${message.member.tag} pocałował ${kissUser.tag}`, "https://discordapp.com/assets/dcbf6274f0ce0f393d064a72db2c8913.svg")
+        .setImage(kissimg[math])
+        .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | ${message.author.tag}`);
+        message.channel.send(kissEmbed);
+    }
+	
 
  });
 
