@@ -157,7 +157,7 @@ bot.on('message', async message => {
         let kissEmbed = new Discord.RichEmbed()
         .setColor("GREEN")
         //.addField(`${bot.emojis.find(`name`, 'cat')} Randomowy kot`, `Tutaj jest jeden z moich kotów:`)
-	.setAuthor(`${message.member.tag} pocałował ${kissUser.tag}`, "https://discordapp.com/assets/dcbf6274f0ce0f393d064a72db2c8913.svg")
+	.setAuthor(`${message.author.tag} pocałował ${kissUser.tag}`, "https://discordapp.com/assets/dcbf6274f0ce0f393d064a72db2c8913.svg")
         .setImage(kissimg[math])
         .setFooter(`${message.createdAt.getHours()}:${message.createdAt.getMinutes()} | ${message.author.tag}`);
         message.channel.send(kissEmbed);
