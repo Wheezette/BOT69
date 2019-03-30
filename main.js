@@ -10,7 +10,7 @@ moment.locale('pl');
 bot.on('ready', () => {
    // console.log(`The bot has been turned on! His name is ${bot.user.tag}. Prefix: "cb!". I jest na ${bot.guilds.size} serwerach!`);
     bot.user.setStatus(`dnd`);
-    bot.user.setActivity(`Schron`, {type: "WATCHING"});
+    bot.user.setActivity(`players`, {type: "WATCHING"});
 });
 //  bot.on("ready", e => {
 //	setInterval (function (){
@@ -146,7 +146,7 @@ bot.on('message', async message => {
 	.setAuthor("Spis Komend Bota")
 	.setDescription("Przedstawiam Ci moje aktualne komendy. Spójrz niżej!")
 	.addField("1 - Główne", "`help` - spis wszystkich komend bota.")
-        .setFooter("Dla Schron'u by Nastti#5705")
+        .setFooter("CP MANAGER")
         message.channel.send(hembed);
     }
 	
